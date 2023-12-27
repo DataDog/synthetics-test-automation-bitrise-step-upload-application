@@ -17,45 +17,8 @@ RunTests() {
     fi
 
     args=()
-    if [[ $PARAM_FAIL_ON_CRITICAL_ERRORS == "1" ]]; then
-        args+=(--failOnCriticalErrors)
-    fi
-    if [[ $PARAM_FAIL_ON_MISSING_TESTS == "1" ]]; then
-        args+=(--failOnMissingTests)
-    fi
-    if [[ $PARAM_FAIL_ON_TIMEOUT == "1" ]]; then
-        args+=(--failOnTimeout)
-    else
-        args+=(--no-failOnTimeout)
-    fi
-    if [[ $PARAM_TUNNEL == "1" ]]; then
-        args+=(--tunnel)
-    fi
     if [[ -n $PARAM_CONFIG_PATH ]]; then
         args+=(--config "${PARAM_CONFIG_PATH}")
-    fi
-    if [[ -n $PARAM_FILES ]]; then
-        IFS=$'\n'
-        for file in ${PARAM_FILES}; do
-            args+=(--files "${file}")
-        done
-        unset IFS
-    fi
-    if [[ -n $PARAM_JUNIT_REPORT ]]; then
-        args+=(--jUnitReport "${PARAM_JUNIT_REPORT}")
-    fi
-    if [[ -n $PARAM_POLLING_TIMEOUT ]]; then
-        args+=(--pollingTimeout "${PARAM_POLLING_TIMEOUT}")
-    fi
-    if [[ -n $PARAM_PUBLIC_IDS ]]; then
-        IFS=$'\n,'
-        for public_id in ${PARAM_PUBLIC_IDS}; do
-            args+=(--public-id "${public_id}")
-        done
-        unset IFS
-    fi
-    if [[ -n $PARAM_TEST_SEARCH_QUERY ]]; then
-        args+=(--search "${PARAM_TEST_SEARCH_QUERY}")
     fi
     if [[ -n $PARAM_VARIABLES ]]; then
         IFS=$'\n,'
@@ -63,10 +26,6 @@ RunTests() {
             args+=(--variable "${variable}")
         done
         unset IFS
-    fi
-
-    if [[ -n $PARAM_LOCATIONS ]]; then
-        export DATADOG_SYNTHETICS_LOCATIONS="${PARAM_LOCATIONS}"
     fi
 
     DATADOG_API_KEY="${PARAM_API_KEY}" \
