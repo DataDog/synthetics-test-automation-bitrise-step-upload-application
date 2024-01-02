@@ -92,7 +92,7 @@ inputs:
       is_required: true
   - config_path: ''
     opts:
-      title: "Config Path"
+      title: "Global JSON configuration"
       description: The global JSON configuration used when launching tests.
   - latest: false
     opts:
@@ -108,7 +108,7 @@ inputs:
       description: Override the mobile application with a local or recently built application.
   - site: 'datadoghq.com'
     opts:
-      title: "Site"
+      title: "Datadog Site"
       description: The Datadog site to send data to. If the `DD_SITE` environment variable is set, it takes preference.
   - version_name: ''
     opts:
