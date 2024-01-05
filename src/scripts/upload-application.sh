@@ -22,19 +22,19 @@ RunTests() {
     fi
 
     if [[ -n $PARAM_VERSION_NAME ]]; then
-        export DATADOG_SYNTHETICS_PARAM_VERSION_NAME="${PARAM_VERSION_NAME}"
+        args+=(--versionName "${PARAM_VERSION_NAME}")
     fi
     
     if [[ -n $PARAM_LATEST ]]; then
-        export DATADOG_SYNTHETICS_PARAM_LATEST="${PARAM_LATEST}"
+        args+=(--latest "${PARAM_LATEST}")
     fi
     
     if [[ -n $PARAM_MOBILE_APPLICATION_ID ]]; then
-        export DATADOG_SYNTHETICS_PARAM_MOBILE_APPLICATION_ID="${PARAM_MOBILE_APPLICATION_ID}"
+        args+=(--mobileApplicationId "${PARAM_MOBILE_APPLICATION_ID}")
     fi
 
     if [[ -n $PARAM_MOBILE_APPLICATION_VERSION_FILE_PATH ]]; then
-        export DATADOG_SYNTHETICS_PARAM_MOBILE_APPLICATION_VERSION_FILE_PATH="${PARAM_MOBILE_APPLICATION_VERSION_FILE_PATH}"
+        args+=(--mobileApplicationVersionFilePath "${PARAM_MOBILE_APPLICATION_VERSION_FILE_PATH}")
     fi
 
     DATADOG_API_KEY="${PARAM_API_KEY}" \
