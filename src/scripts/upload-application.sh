@@ -1,9 +1,9 @@
 RunTests() {
-    PARAM_API_KEY=$(eval echo "\$$PARAM_API_KEY")
-    PARAM_APP_KEY=$(eval echo "\$$PARAM_APP_KEY")
+    api_key=$(eval echo "\$$api_key")
+    app_key=$(eval echo "\$$app_key")
 
     if [[ -n "${DD_SITE}" ]]; then
-        PARAM_SITE=${DD_SITE}
+        site=${DD_SITE}
     fi
 
     DATADOG_CI_VERSION="2.25.0"
@@ -17,29 +17,29 @@ RunTests() {
     fi
 
     args=()
-    if [[ -n $PARAM_CONFIG_PATH ]]; then
-        args+=(--config "${PARAM_CONFIG_PATH}")
+    if [[ -n $config_path ]]; then
+        args+=(--config "${config_path}")
     fi
 
-    if [[ -n $PARAM_VERSION_NAME ]]; then
-        args+=(--versionName "${PARAM_VERSION_NAME}")
+    if [[ -n $version_name ]]; then
+        args+=(--versionName "${version_name}")
     fi
     
-    if [[ -n $PARAM_LATEST ]]; then
-        args+=(--latest "${PARAM_LATEST}")
+    if [[ -n $latest ]]; then
+        args+=(--latest "${latest}")
     fi
     
-    if [[ -n $PARAM_MOBILE_APPLICATION_ID ]]; then
-        args+=(--mobileApplicationId "${PARAM_MOBILE_APPLICATION_ID}")
+    if [[ -n $mobile_application_id ]]; then
+        args+=(--mobileApplicationId "${mobile_application_id}")
     fi
 
-    if [[ -n $PARAM_MOBILE_APPLICATION_VERSION_FILE_PATH ]]; then
-        args+=(--mobileApplicationVersionFilePath "${PARAM_MOBILE_APPLICATION_VERSION_FILE_PATH}")
+    if [[ -n $mobile_application_version_file_path ]]; then
+        args+=(--mobileApplicationVersionFilePath "${mobile_application_version_file_path}")
     fi
 
-    DATADOG_API_KEY="${PARAM_API_KEY}" \
-    DATADOG_APP_KEY="${PARAM_APP_KEY}" \
-    DATADOG_SITE="${PARAM_SITE}" \
+    DATADOG_API_KEY="${api_key}" \
+    DATADOG_APP_KEY="${app_key}" \
+    DATADOG_SITE="${site}" \
     DATADOG_SYNTHETICS_CI_TRIGGER_APP="bitrise_step" \
         $DATADOG_CI_COMMAND synthetics upload-application \
         "${args[@]}"
