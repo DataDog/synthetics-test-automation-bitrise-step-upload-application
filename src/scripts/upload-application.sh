@@ -20,19 +20,15 @@ RunTests() {
     if [[ -n $config_path ]]; then
         args+=(--config "${config_path}")
     fi
-
     if [[ -n $version_name ]]; then
         args+=(--versionName "${version_name}")
     fi
-    
     if [[ -n $latest ]]; then
         args+=(--latest "${latest}")
     fi
-    
     if [[ -n $mobile_application_id ]]; then
         args+=(--mobileApplicationId "${mobile_application_id}")
     fi
-
     if [[ -n $mobile_application_version_file_path ]]; then
         args+=(--mobileApplicationVersionFilePath "${mobile_application_version_file_path}")
     fi
