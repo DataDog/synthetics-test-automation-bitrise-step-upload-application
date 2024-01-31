@@ -42,6 +42,6 @@ RunTests() {
 
 # Will not run if sourced for bats-core tests.
 # View src/tests for more information.
-if [ $BITRISE_TEST_ENV != true ]; then
+if [[ $BITRISE_TEST_ENV != true ]]; then
     RunTests
 fi
