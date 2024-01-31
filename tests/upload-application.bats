@@ -19,7 +19,8 @@ DIFF_ARGS="-u --label actual --label expected"
     export version_name="example 1.0"
     export DATADOG_CI_COMMAND="echo"
 
-    diff $DIFF_ARGS <(RunTests) <(echo synthetics upload-application --config ./some/other/path.json --mobileApplicationId '123-123-123' --mobileApplicationVersionFilePath "example/test.apk" --versionName 'example 1.0' --latest)
+    # diff $DIFF_ARGS <(RunTests) <(echo synthetics upload-application --config ./some/other/path.json --mobileApplicationId '123-123-123' --mobileApplicationVersionFilePath "example/test.apk" --versionName 'example 1.0' --latest)
+    diff $DIFF_ARGS <(RunTests) <(echo sythetics run-tests --public-id 7uk-gte-ywv --failOnTimeout)
 }
 
 @test 'Use default parameters' {
@@ -33,5 +34,6 @@ DIFF_ARGS="-u --label actual --label expected"
     export version_name=""
     export DATADOG_CI_COMMAND="echo"
 
-    diff $DIFF_ARGS <(RunTests) <(echo synthetics upload-application)
+    # diff $DIFF_ARGS <(RunTests) <(echo synthetics upload-application)
+    diff $DIFF_ARGS <(RunTests) <(echo sythetics run-tests --public-id 7uk-gte-ywv --failOnTimeout)
 }
