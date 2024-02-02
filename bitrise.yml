@@ -9,6 +9,10 @@ app:
   - BITRISE_STEP_GIT_CLONE_URL: https://github.com/placeholder-github-username/bitrise-step-datadog-mobile-app-upload.git
   - MY_STEPLIB_REPO_FORK_GIT_URL: $MY_STEPLIB_REPO_FORK_GIT_URL
 
+trigger_map:
+- push_branch: '*'
+  workflow: test
+
 workflows:
   test:
     steps:
@@ -85,7 +89,3 @@ workflows:
             bitrise share start -c "${MY_STEPLIB_REPO_FORK_GIT_URL}"
             bitrise share create --stepid "${BITRISE_STEP_ID}" --tag "${BITRISE_STEP_VERSION}" --git "${BITRISE_STEP_GIT_CLONE_URL}"
             bitrise share finish
-
-trigger_map:
-- push_branch: '*'
-  workflow: test
