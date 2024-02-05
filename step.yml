@@ -63,7 +63,7 @@ type_tags:
 
 toolkit:
   bash:
-    entry_file: ./src/scripts/upload-application.sh
+    entry_file: ./upload-application.sh
 
 
 inputs:
