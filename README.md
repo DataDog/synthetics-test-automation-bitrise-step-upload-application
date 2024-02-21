@@ -1,18 +1,27 @@
-# datadog-mobile-app-upload
+# Datadog Continuous Testing for Bitrise
 
-placeholder description
+<!-- TODO add link to marketplace after we publish the step -->
+<!-- [![Visual Studio Marketplace Version]()][A-1]  -->
+[![Build Status](https://app.bitrise.io/app/7846c17b-8a1c-4fc7-aced-5f3b0b2ec6c4/status.svg?token=480MdFpG78E6kZASg5w1dw&branch=main)](https://app.bitrise.io/app/7846c17b-8a1c-4fc7-aced-5f3b0b2ec6c4)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
+# Overview
 
-## How to use this Step
+With the `synthetics-test-automation-bitrise-step-upload-application` step you can upload version of your application to Datadog to run Synthetics tests against during your Bitrise CI and ensure all your teams using Bitrise can benefit from Synthetic tests at every stage of the software lifecycle. This step uses the [Datadog CI Synthetics command][B-2]. Your application already needs to exist for this to work.
 
-Can be run directly with the [bitrise CLI](https://github.com/bitrise-io/bitrise),
-just `git clone` this repository, `cd` into it's folder in your Terminal/Command Line
-and call `bitrise run test`.
+## Setup
 
-*Check the `bitrise.yml` file for required inputs which have to be
-added to your `.bitrise.secrets.yml` file!*
+To get started:
 
-Step by step:
+1. Add this step to your workflow. You can see Bitrise's documentation on how to do that [here][D-1]. You can also configure it locally by referencing this step in your `bitrise.yml`.
+2. Add you API and App Keys to your secrets in Bitrise. Documentation on how to do that can be found [here][D-2].
+3. Configure your step inputs ([docs][D-3]). You can also configure them in your `bitrise.yml`. The only required inputs are the 2 secrets you configured earlier. The rest of the possible inputs will be described later on.
+
+## How to use this Step locally
+
+This Step can be run directly with the [bitrise CLI][B-3].
+
+To get sterted:
 
 1. Open up your Terminal / Command Line
 2. `git clone` the repository
@@ -20,8 +29,7 @@ Step by step:
 5. Create a `.bitrise.secrets.yml` file in the same directory of `bitrise.yml`
    (the `.bitrise.secrets.yml` is a git ignored file, you can store your secrets in it)
 6. Check the `bitrise.yml` file for any secret you should set in `.bitrise.secrets.yml`
-  * Best practice is to mark these options with something like `# define these in your .bitrise.secrets.yml`, in the `app:envs` section.
-7. Once you have all the required secret parameters in your `.bitrise.secrets.yml` you can just run this step with the [bitrise CLI](https://github.com/bitrise-io/bitrise): `bitrise run test`
+7. Once you have all the required secret parameters in your `.bitrise.secrets.yml` you can just run this step with the [bitrise CLI][B-3]: `bitrise run test`
 
 An example `.bitrise.secrets.yml` file:
 
@@ -31,63 +39,78 @@ envs:
 - A_SECRET_PARAM_TWO: the value for secret two
 ```
 
-## How to create your own step
+## Usage
 
-1. Create a new git repository for your step (**don't fork** the *step template*, create a *new* repository)
-2. Copy the [step template](https://github.com/bitrise-steplib/step-template) files into your repository
-3. Fill the `step.sh` with your functionality
-4. Wire out your inputs to `step.yml` (`inputs` section)
-5. Fill out the other parts of the `step.yml` too
-6. Provide test values for the inputs in the `bitrise.yml`
-7. Run your step with `bitrise run test` - if it works, you're ready
+### Example task using a global configuration override with `configPath`
 
-__For Step development guidelines & best practices__ check this documentation: [https://github.com/bitrise-io/bitrise/blob/master/_docs/step-development-guideline.md](https://github.com/bitrise-io/bitrise/blob/master/_docs/step-development-guideline.md).
+<!-- TODO: change git urls to step references after we publish it -->
+This task overrides the path to the global `datadog-ci.config.json` file.
 
-**NOTE:**
-
-If you want to use your step in your project's `bitrise.yml`:
-
-1. git push the step into it's repository
-2. reference it in your `bitrise.yml` with the `git::PUBLIC-GIT-CLONE-URL@BRANCH` step reference style:
-
-```
-- git::https://github.com/user/my-step.git@branch:
-   title: My step
+```yml
+- git::https://github.com/DataDog/synthetics-test-automation-bitrise-step-run-tests.git:
    inputs:
-   - my_input_1: "my value 1"
-   - my_input_2: "my value 2"
+   - api_key: $DATADOG_API_KEY
+   - app_key: $DATADOG_APP_KEY
+   - config_path: './synthetics-config.json'
 ```
 
-You can find more examples of step reference styles
-in the [bitrise CLI repository](https://github.com/bitrise-io/bitrise/blob/master/_examples/tutorials/steps-and-workflows/bitrise.yml#L65).
+For an example configuration file, see this [`global.config.json` file][B-1].
 
-## How to contribute to this Step
+### Example including all possible configurations
 
-1. Fork this repository
-2. `git clone` it
-3. Create a branch you'll work on
-4. To use/test the step just follow the **How to use this Step** section
-5. Do the changes you want to
-6. Run/test the step before sending your contribution
-  * You can also test the step in your `bitrise` project, either on your Mac or on [bitrise.io](https://www.bitrise.io)
-  * You just have to replace the step ID in your project's `bitrise.yml` with either a relative path, or with a git URL format
-  * (relative) path format: instead of `- original-step-id:` use `- path::./relative/path/of/script/on/your/Mac:`
-  * direct git URL format: instead of `- original-step-id:` use `- git::https://github.com/user/step.git@branch:`
-  * You can find more example of alternative step referencing at: https://github.com/bitrise-io/bitrise/blob/master/_examples/tutorials/steps-and-workflows/bitrise.yml
-7. Once you're done just commit your changes & create a Pull Request
+For reference here's how a full configuration could look like:
+
+```yml
+- git::https://github.com/DataDog/synthetics-test-automation-bitrise-step-run-tests.git:
+   inputs:
+   - api_key: $DATADOG_API_KEY
+   - app_key: $DATADOG_APP_KEY
+   - config_path: './global.config.json'
+   - latest: true
+   - mobile_application_version_id: '123-123-123'
+   - mobile_application_version_file_path: 'path/to/application.apk'
+   - site: 'datadoghq.com'
+   - version_name: 'example 1.0'
+```
 
 
-## Share your own Step
+## Inputs
 
-You can share your Step or step version with the [bitrise CLI](https://github.com/bitrise-io/bitrise). If you use the `bitrise.yml` included in this repository, all you have to do is:
+| Name                               | Requirement | Description                                                                                                                            |
+| -----------------------------------| :---------: | ---------------------------------------------------------------------------------------------------------------------------------------|
+| `apiKey`                           | _required_  | Your Datadog API key. This key is created by your [Datadog organization][C-3] and will be accessed as an environment variable.         |
+| `appKey`                           | _required_  | Your Datadog application key. This key is created by your [Datadog organization][C-3] and will be accessed as an environment variable. |
+| `configPath`                       | _optional_  | The global JSON configuration is used when launching tests. See the [example configuration][C-2] for more details.                     |
+| `latest`                           | _optional_  | Marks the application as `latest`. Any tests that run on the latest version will use this version on their next run.                   |
+| `mobileApplicationVersionId`       | _optional_  | ID of the application you want to upload the new version to.                                                                           |
+| `mobileApplicationVersionFilePath` | _optional_  | Override the application version for Synthetic mobile application tests.                                                               |
+| `site`                             | _optional_  | The Datadog site to send data to. If the `DD_SITE` environment variable is set, it takes precedence.                                   |
+| `versionName`                      | _optional_  | Name of the new version. It has to be unique.                                                                                          |
 
-1. In your Terminal / Command Line `cd` into this directory (where the `bitrise.yml` of the step is located)
-1. Run: `bitrise run test` to test the step
-1. Run: `bitrise run audit-this-step` to audit the `step.yml`
-1. Check the `share-this-step` workflow in the `bitrise.yml`, and fill out the
-   `envs` if you haven't done so already (don't forget to bump the version number if this is an update
-   of your step!)
-1. Then run: `bitrise run share-this-step` to share the step (version) you specified in the `envs`
-1. Send the Pull Request, as described in the logs of `bitrise run share-this-step`
+## Further reading
 
-That's all ;)
+Additional helpful documentation, links, and articles:
+
+- [Continuous Testing and CI/CD Configuration][C-1]
+- [Best practices for continuous testing with Datadog][E-1]
+
+<!-- Links to Marketplace -->
+[A-1]: https://marketplace.visualstudio.com/items?itemName=Datadog.datadog-ci
+
+<!-- Github links -->
+[B-1]: https://github.com/DataDog/datadog-ci/blob/master/.github/workflows/e2e/global.config.json
+[B-2]: https://github.com/DataDog/datadog-ci/tree/master/src/commands/synthetics#test-files
+[B-3]: https://github.com/bitrise-io/bitrise
+
+<!-- Links to datadog documentation -->
+[C-1]: https://docs.datadoghq.com/continuous_testing/cicd_integrations/configuration
+[C-2]: https://docs.datadoghq.com/continuous_testing/cicd_integrations/configuration/?tab=npm#global-configuration-file-options
+[C-3]: https://docs.datadoghq.com/account_management/api-app-keys/
+
+<!-- Integration specific links -->
+[D-1]: https://devcenter.bitrise.io/en/steps-and-workflows/introduction-to-steps/adding-steps-to-a-workflow.html
+[D-2]: https://devcenter.bitrise.io/en/builds/secrets.html#setting-a-secret
+[D-3]: https://devcenter.bitrise.io/en/steps-and-workflows/introduction-to-steps/step-inputs.html
+
+<!-- Other -->
+[E-1]: https://www.datadoghq.com/blog/best-practices-datadog-continuous-testing/
