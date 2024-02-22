@@ -1,12 +1,12 @@
 title: |-
   datadog-mobile-app-upload
 summary: |
-  placeholder summary
+  Step to upload a new version of you application to Datadog for Synthetics tests
 description: |
-  placeholder description
-website: https://github.com/placeholder-github-username/bitrise-step-datadog-mobile-app-upload
-source_code_url: https://github.com/placeholder-github-username/bitrise-step-datadog-mobile-app-upload
-support_url: https://github.com/placeholder-github-username/bitrise-step-datadog-mobile-app-upload/issues
+  With the `synthetics-test-automation-bitrise-step-upload-application` step you can upload a new version of your application to Datadog to run Synthetics tests against during your Bitrise CI and ensure all your teams using Bitrise can benefit from Synthetic tests at every stage of the software lifecycle.
+website: https://github.com/DataDog/synthetics-test-automation-bitrise-step-upload-application
+source_code_url: https://github.com/DataDog/synthetics-test-automation-bitrise-step-upload-application
+support_url: https://github.com/DataDog/synthetics-test-automation-bitrise-step-upload-application/issues
 
 type_tags:
   - test
