@@ -7,7 +7,7 @@
 
 # Overview
 
-With the `synthetics-test-automation-bitrise-step-upload-application` step you can upload version of your application to Datadog to run Synthetics tests against during your Bitrise CI and ensure all your teams using Bitrise can benefit from Synthetic tests at every stage of the software lifecycle. This step uses the [Datadog CI Synthetics command][B-2]. Your application already needs to exist for this to work.
+With the `synthetics-test-automation-bitrise-step-upload-application` step you can upload a new version of your application to Datadog to run Synthetics tests against during your Bitrise CI and ensure all your teams using Bitrise can benefit from Synthetic tests at every stage of the software lifecycle. This step uses the [Datadog CI Synthetics command][B-2]. Your application already needs to exist for this to work.
 
 ## Setup
 
