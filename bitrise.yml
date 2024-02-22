@@ -3,7 +3,6 @@ default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
 
 app:
   envs:
-  # If you want to share this step into a StepLib
   - BITRISE_STEP_ID: datadog-mobile-app-upload
   - BITRISE_STEP_VERSION: "0.0.1"
   - BITRISE_STEP_GIT_CLONE_URL: https://github.com/placeholder-github-username/bitrise-step-datadog-mobile-app-upload.git
@@ -52,7 +51,6 @@ workflows:
 
   share-this-step:
     envs:
-      # if you want to share this step into a StepLib
       - MY_STEPLIB_REPO_FORK_GIT_URL: $MY_STEPLIB_REPO_FORK_GIT_URL
       - BITRISE_STEP_ID: $BITRISE_STEP_ID
       - BITRISE_STEP_VERSION: $BITRISE_STEP_VERSION
