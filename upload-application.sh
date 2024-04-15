@@ -1,4 +1,4 @@
-RunTests() {
+UploadApplication() {
     if [[ -n "${DD_SITE}" ]]; then
         site=${DD_SITE}
     fi
