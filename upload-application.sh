@@ -41,10 +41,8 @@ RunTests() {
     DATADOG_SUBDOMAIN="app" \
     DATADOG_SITE="${site}" \
     DATADOG_SYNTHETICS_CI_TRIGGER_APP="bitrise_step" \
-        $DATADOG_CI_COMMAND synthetics run-tests --public-id 7uk-gte-ywv --failOnTimeout
-        # TODO: Go back to using the correct command
-        # $DATADOG_CI_COMMAND synthetics upload-application \
-        # "${args[@]}"
+        $DATADOG_CI_COMMAND synthetics upload-application \
+        "${args[@]}"
 }
 
 # Will not run if sourced for bats-core tests.
