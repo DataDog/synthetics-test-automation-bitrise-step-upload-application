@@ -27,7 +27,7 @@ workflows:
         inputs:
         - path: ./_tmp
         - is_create_path: true
-    - git::https://github.com/DataDog/synthetics-test-automation-bitrise-step-upload-application.git@BITRISE_GIT_BRANCH:
+    - git::https://github.com/DataDog/synthetics-test-automation-bitrise-step-upload-application.git@$BITRISE_GIT_BRANCH:
     # TODO: go back to using `path::./`
         inputs:
         - api_key: $DATADOG_API_KEY
