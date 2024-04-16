@@ -7,6 +7,7 @@ app:
   - BITRISE_STEP_VERSION: "1.0.0"
   - BITRISE_STEP_GIT_CLONE_URL: https://github.com/DataDog/synthetics-test-automation-bitrise-step-upload-application.git
   - MY_STEPLIB_REPO_FORK_GIT_URL: $MY_STEPLIB_REPO_FORK_GIT_URL
+  - BITRISE_GIT_BRANCH: $BITRISE_GIT_BRANCH
 
 trigger_map:
 - push_branch: '*'
@@ -26,7 +27,7 @@ workflows:
         inputs:
         - path: ./_tmp
         - is_create_path: true
-    - git::https://github.com/DataDog/synthetics-test-automation-bitrise-step-upload-application.git@${BITRISE_GIT_BRANCH}:
+    - git::https://github.com/DataDog/synthetics-test-automation-bitrise-step-upload-application.git@BITRISE_GIT_BRANCH:
     # TODO: go back to using `path::./`
         inputs:
         - api_key: $DATADOG_API_KEY
