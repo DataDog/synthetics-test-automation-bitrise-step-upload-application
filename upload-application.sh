@@ -48,5 +48,5 @@ UploadApplication() {
 # Will not run if sourced for bats-core tests.
 # View src/tests for more information.
 if [ "$IS_TEST_ENV" != "true" ]; then
-    RunTests
+    UploadApplication
 fi
