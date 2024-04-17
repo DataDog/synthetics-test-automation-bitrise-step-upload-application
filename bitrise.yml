@@ -36,6 +36,7 @@ workflows:
         - api_key: $DATADOG_API_KEY
         - app_key: $DATADOG_APP_KEY
         - mobile_application_version_file_path: "/bitrise/src/_tmp/iso_file"
+        - mobile_application_id: "bcb5d107-5536-4fe5-a4a8-ea34a6c9bbee"
     - script:
         is_always_run: true
         title: Run tests
