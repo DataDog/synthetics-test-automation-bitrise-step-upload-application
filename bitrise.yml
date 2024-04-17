@@ -26,6 +26,14 @@ workflows:
         inputs:
         - path: ./_tmp
         - is_create_path: true
+    - script:
+        title: Generate version from timestamp
+        inputs:
+        - content: |-
+            #!/bin/bash
+            set $APPLICATION_VERSION_NAME="date +%s"
+            echo "Generated version: $APPLICATION_VERSION_NAME"
+            envman add --key APPLICATION_VERSION_NAME --value "$APPLICATION_VERSION_NAME"
     - file-downloader:
         inputs:
         - destination: "/bitrise/src/_tmp/ios_file"
@@ -37,7 +45,7 @@ workflows:
         - app_key: $DATADOG_APP_KEY
         - mobile_application_version_file_path: "/bitrise/src/_tmp/ios_file"
         - mobile_application_id: "bcb5d107-5536-4fe5-a4a8-ea34a6c9bbee"
-        - version_name: "1.0.0"
+        - version_name: "$APPLICATION_VERSION_NAME"
     - script:
         is_always_run: true
         title: Run tests
