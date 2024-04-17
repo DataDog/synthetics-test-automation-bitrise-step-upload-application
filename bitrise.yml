@@ -29,7 +29,7 @@ workflows:
     - file-downloader:
         inputs:
         - destination: "/"
-        - source: "$$BITRISEIO_android_file_URL"
+        - source: "$BITRISEIO_ios_file_URL"
     - git::https://github.com/DataDog/synthetics-test-automation-bitrise-step-upload-application.git:
     # TODO: go back to using `path::./`
         inputs:
