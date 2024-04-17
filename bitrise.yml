@@ -28,7 +28,7 @@ workflows:
         - is_create_path: true
     - file-downloader:
         inputs:
-        - destination: "/bitrise/src/_tmp"
+        - destination: "/bitrise/src/_tmp/iso_file"
         - source: "$BITRISEIO_ios_file_URL"
     - git::https://github.com/DataDog/synthetics-test-automation-bitrise-step-upload-application.git:
     # TODO: go back to using `path::./`
