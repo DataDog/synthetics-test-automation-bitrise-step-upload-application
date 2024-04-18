@@ -27,7 +27,7 @@ workflows:
         - path: ./_tmp
         - is_create_path: true
     - script:
-        title: Generate version from timestamp
+        title: Generate version name from timestamp
         inputs:
         - content: |-
             #!/bin/bash
