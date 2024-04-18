@@ -61,11 +61,13 @@ inputs:
       category: Optional Inputs
       title: "Mobile Application ID"
       description: ID of the application you want to upload the new version to.
+      is_required: true
   - mobile_application_version_file_path: ''
     opts:
       category: Optional Inputs
       title: "Mobile Application Version File Path"
       description: Override the mobile application with a local or recently built application.
+      is_required: true
   - site: 'datadoghq.com'
     opts:
       category: Optional Inputs
@@ -76,3 +78,4 @@ inputs:
       category: Optional Inputs
       title: "Version Name"
       description: Name of the new version. It has to be unique.
+      is_required: true
