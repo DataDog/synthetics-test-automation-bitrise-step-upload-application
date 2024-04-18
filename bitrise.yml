@@ -31,7 +31,7 @@ workflows:
         inputs:
         - content: |-
             #!/bin/bash
-            export $APPLICATION_VERSION_NAME="date +%s"
+            export $APPLICATION_VERSION_NAME="$(date +%s)"
             echo "Generated version: $APPLICATION_VERSION_NAME"
             envman add --key APPLICATION_VERSION_NAME --value "$APPLICATION_VERSION_NAME"
     - file-downloader:
