@@ -67,7 +67,7 @@ workflows:
         - public_ids: "bcq-y54-rq7"
         - fail_on_critical_errors: "true"
 
-test-test-on-xcode-for-ios:
+  test-test-on-xcode-for-ios:
     steps:
     - script:
         title: Generate version name from timestamp
