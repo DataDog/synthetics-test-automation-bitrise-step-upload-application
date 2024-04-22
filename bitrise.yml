@@ -38,6 +38,14 @@ workflows:
             echo "GIT_REPOSITORY_URL: $GIT_REPOSITORY_URL"
             echo "BITRISE_GIT_BRANCH: $BITRISE_GIT_BRANCH"
             echo "GIT_HTTP_USERNAME: $GIT_HTTP_USERNAME"
+    - git-clone@8: {}
+    - script:
+        title: Generate version name from timestamp
+        inputs:
+        - content: |-
+            #!/bin/bash
+            ls -lha
+            ls ../ -lha
     - file-downloader:
         inputs:
         - destination: "/bitrise/src/_tmp/android_file"
