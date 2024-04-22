@@ -35,7 +35,7 @@ workflows:
             ls -lha
             ls ../ -lha
     - path::./:
-        title: Upload Android application
+        # title: Upload Android application
         inputs:
         - api_key: $DATADOG_API_KEY
         - app_key: $DATADOG_APP_KEY
@@ -44,14 +44,14 @@ workflows:
         - version_name: "$APPLICATION_VERSION_NAME"
         - latest: "true"
     - datadog-mobile-app-run-tests@1:
-        title: Run Android tests
+        # title: Run Android tests
         inputs:
         - api_key: $DATADOG_API_KEY
         - app_key: $DATADOG_APP_KEY
         - public_ids: "rxd-vdv-qce"
         - fail_on_critical_errors: "true"
     - path::./:
-        title: Upload iOS application
+        # title: Upload iOS application
         inputs:
         - api_key: $DATADOG_API_KEY
         - app_key: $DATADOG_APP_KEY
@@ -60,7 +60,7 @@ workflows:
         - version_name: "$APPLICATION_VERSION_NAME"
         - latest: "true"
     - datadog-mobile-app-run-tests@1:
-        title: Run iOS tests
+        # title: Run iOS tests
         inputs:
         - api_key: $DATADOG_API_KEY
         - app_key: $DATADOG_APP_KEY
