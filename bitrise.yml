@@ -38,9 +38,11 @@ workflows:
             echo "GIT_REPOSITORY_URL: $GIT_REPOSITORY_URL"
             echo "BITRISE_GIT_BRANCH: $BITRISE_GIT_BRANCH"
             echo "GIT_HTTP_USERNAME: $GIT_HTTP_USERNAME"
+    - activate-ssh-key@4: {}
     - git-clone@8: {}
     - script:
-        title: Generate version name from timestamp
+        title: stuff
+        is_always_run: true
         inputs:
         - content: |-
             #!/bin/bash
