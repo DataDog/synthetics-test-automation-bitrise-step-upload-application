@@ -62,6 +62,12 @@ workflows:
         - mobile_application_version_file_path: "/bitrise/src/Miniapp16-02-2024.apk"
         - mobile_application_id: "7b54b434-59ea-4ef7-868b-12c9180842f7"
         - version_name: "$APPLICATION_VERSION_NAME"
+    - datadog-mobile-app-run-tests@1:
+        inputs:
+        - api_key: $DATADOG_API_KEY
+        - app_key: $DATADOG_APP_KEY
+        - public_ids: "rxd-vdv-qce"
+
 
 
   # ----------------------------------------------------------------
