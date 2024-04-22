@@ -15,17 +15,6 @@ trigger_map:
 workflows:
   test:
     steps:
-    # - change-workdir:
-    #     title: Switch working dir to test / _tmp dir
-    #     description: |-
-    #       To prevent step testing issues, like referencing relative
-    #       files with just './some-file' in the step's code, which would
-    #       work for testing the step from this directory directly
-    #       but would break if the step is included in another `bitrise.yml`.
-    #     run_if: true
-    #     inputs:
-    #     - path: ./_tmp
-    #     - is_create_path: true
     - script:
         title: Generate version name from timestamp
         inputs:
@@ -34,10 +23,6 @@ workflows:
             export APPLICATION_VERSION_NAME="$(date +%s)"
             echo "Generated version_name: $APPLICATION_VERSION_NAME"
             envman add --key APPLICATION_VERSION_NAME --value "$APPLICATION_VERSION_NAME"
-            echo "BITRISE_SOURCE_DIR: $BITRISE_SOURCE_DIR"
-            echo "GIT_REPOSITORY_URL: $GIT_REPOSITORY_URL"
-            echo "BITRISE_GIT_BRANCH: $BITRISE_GIT_BRANCH"
-            echo "GIT_HTTP_USERNAME: $GIT_HTTP_USERNAME"
     - activate-ssh-key@4: {}
     - git-clone@8: {}
     - script:
@@ -49,13 +34,7 @@ workflows:
             pwd
             ls -lha
             ls ../ -lha
-    # - file-downloader:
-    #     inputs:
-    #     - destination: "/bitrise/src/_tmp/android_file"
-    #     - source: "$BITRISEIO_android_file_URL"
-    # - git::https://github.com/DataDog/synthetics-test-automation-bitrise-step-upload-application.git:
     - path::./:
-    # TODO: go back to using `path::./`
         inputs:
         - api_key: $DATADOG_API_KEY
         - app_key: $DATADOG_APP_KEY
@@ -68,6 +47,20 @@ workflows:
         - api_key: $DATADOG_API_KEY
         - app_key: $DATADOG_APP_KEY
         - public_ids: "rxd-vdv-qce"
+        - fail_on_critical_errors: "true"
+    - path::./:
+        inputs:
+        - api_key: $DATADOG_API_KEY
+        - app_key: $DATADOG_APP_KEY
+        - mobile_application_version_file_path: "/bitrise/src/SyntheticsMiniApp_2023_07_05_PR13.ipa"
+        - mobile_application_id: "bcb5d107-5536-4fe5-a4a8-ea34a6c9bbee"
+        - version_name: "$APPLICATION_VERSION_NAME"
+        - latest: "true"
+    - datadog-mobile-app-run-tests@1:
+        inputs:
+        - api_key: $DATADOG_API_KEY
+        - app_key: $DATADOG_APP_KEY
+        - public_ids: "bcq-y54-rq7"
         - fail_on_critical_errors: "true"
 
 
