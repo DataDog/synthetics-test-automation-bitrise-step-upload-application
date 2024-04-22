@@ -34,6 +34,10 @@ workflows:
             export APPLICATION_VERSION_NAME="$(date +%s)"
             echo "Generated version_name: $APPLICATION_VERSION_NAME"
             envman add --key APPLICATION_VERSION_NAME --value "$APPLICATION_VERSION_NAME"
+            echo "BITRISE_SOURCE_DIR: $BITRISE_SOURCE_DIR"
+            echo "GIT_REPOSITORY_URL: $GIT_REPOSITORY_URL"
+            echo "BITRISE_GIT_BRANCH: $BITRISE_GIT_BRANCH"
+            echo "GIT_HTTP_USERNAME: $GIT_HTTP_USERNAME"
     - file-downloader:
         inputs:
         - destination: "/bitrise/src/_tmp/android_file"
