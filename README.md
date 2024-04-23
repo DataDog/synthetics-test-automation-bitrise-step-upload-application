@@ -46,7 +46,7 @@ envs:
 This task overrides the path to the global `datadog-ci.config.json` file.
 
 ```yml
-- datadog-mobile-app-upload@1: {}
+- datadog-mobile-app-upload@1:
    inputs:
    - api_key: $DATADOG_API_KEY
    - app_key: $DATADOG_APP_KEY
@@ -60,7 +60,7 @@ For an example configuration file, see the [`global.config.json` file][2001].
 For reference here's how a full configuration could look:
 
 ```yml
-- datadog-mobile-app-upload@1: {}
+- datadog-mobile-app-upload@1:
    inputs:
    - api_key: $DATADOG_API_KEY
    - app_key: $DATADOG_APP_KEY
