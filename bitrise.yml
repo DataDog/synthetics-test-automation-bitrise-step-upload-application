@@ -7,6 +7,7 @@ app:
   - BITRISE_STEP_VERSION: "1.0.0"
   - BITRISE_STEP_GIT_CLONE_URL: https://github.com/DataDog/synthetics-test-automation-bitrise-step-upload-application.git
   - MY_STEPLIB_REPO_FORK_GIT_URL: $MY_STEPLIB_REPO_FORK_GIT_URL
+  - DATADOG_UPLOADED_APPLICATION_VERSION_ID: $DATADOG_UPLOADED_APPLICATION_VERSION_ID
 
 trigger_map:
 - push_branch: '*'
@@ -84,13 +85,14 @@ workflows:
         - mobile_application_version_file_path: "/bitrise/src/SyntheticsMiniApp_2023_07_05_PR13.ipa"
         - mobile_application_id: "bcb5d107-5536-4fe5-a4a8-ea34a6c9bbee"
         - version_name: "$APPLICATION_VERSION_NAME"
-        - latest: true
+        # - latest: true
     - datadog-mobile-app-run-tests@1:
         title: Run iOS tests
         inputs:
         - api_key: $DATADOG_API_KEY
         - app_key: $DATADOG_APP_KEY
         - public_ids: "bcq-y54-rq7"
+        - mobile_application_version: $DATADOG_UPLOADED_APPLICATION_VERSION_ID
         - fail_on_critical_errors: true
 
   test-on-Xcode-stack:
