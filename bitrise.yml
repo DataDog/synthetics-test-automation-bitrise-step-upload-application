@@ -59,8 +59,8 @@ workflows:
         - mobile_application_id: "7b54b434-59ea-4ef7-868b-12c9180842f7"
         - version_name: "$APPLICATION_VERSION_NAME"
         # - latest: true
-        # outputs:
-        # - DATADOG_UPLOADED_APPLICATION_VERSION_ID: DATADOG_UPLOADED_APPLICATION_VERSION_ID
+        outputs:
+        - DATADOG_UPLOADED_APPLICATION_VERSION_ID: DATADOG_UPLOADED_APPLICATION_VERSION_ID
     - script:
         title: more stuff
         is_always_run: true

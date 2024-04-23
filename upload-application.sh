@@ -50,7 +50,7 @@ UploadApplication() {
         version_id=${BASH_REMATCH[1]}
         echo "Extracted Version ID: $version_id"
         export DATADOG_UPLOADED_APPLICATION_VERSION_ID=$version_id
-        envman add --key DATADOG_UPLOADED_APPLICATION_VERSION_ID --value "$version_id"
+        # envman add --key DATADOG_UPLOADED_APPLICATION_VERSION_ID --value "$version_id"
     else
         echo "No Version ID found in the output."
     fi
