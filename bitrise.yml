@@ -13,7 +13,7 @@ trigger_map:
   workflow: test
 
 workflows:
-  test:
+  test-on-ubuntu-stack:
     steps:
     - change-workdir:
         title: Switch working dir to test / _tmp dir
@@ -61,7 +61,7 @@ workflows:
         - app_key: $DATADOG_APP_KEY
         - public_ids: "rxd-vdv-qce"
         - fail_on_critical_errors: "true"
-    - path::./:
+    - path::./_tmp:
         title: Upload iOS application
         inputs:
         - api_key: $DATADOG_API_KEY
