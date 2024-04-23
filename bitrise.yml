@@ -7,7 +7,7 @@ app:
   - BITRISE_STEP_VERSION: "1.0.0"
   - BITRISE_STEP_GIT_CLONE_URL: https://github.com/DataDog/synthetics-test-automation-bitrise-step-upload-application.git
   - MY_STEPLIB_REPO_FORK_GIT_URL: $MY_STEPLIB_REPO_FORK_GIT_URL
-  - DATADOG_UPLOADED_APPLICATION_VERSION_ID: $DATADOG_UPLOADED_APPLICATION_VERSION_ID
+  # - DATADOG_UPLOADED_APPLICATION_VERSION_ID: $DATADOG_UPLOADED_APPLICATION_VERSION_ID
 
 trigger_map:
 - push_branch: '*'
@@ -59,8 +59,8 @@ workflows:
         - mobile_application_id: "7b54b434-59ea-4ef7-868b-12c9180842f7"
         - version_name: "$APPLICATION_VERSION_NAME"
         # - latest: true
-        outputs:
-        - DATADOG_UPLOADED_APPLICATION_VERSION_ID: DATADOG_UPLOADED_APPLICATION_VERSION_ID
+        # outputs:
+        # - DATADOG_UPLOADED_APPLICATION_VERSION_ID: DATADOG_UPLOADED_APPLICATION_VERSION_ID
     - script:
         title: more stuff
         is_always_run: true
