@@ -57,14 +57,14 @@ workflows:
         - mobile_application_version_file_path: "/bitrise/src/_tmp/Miniapp16-02-2024.apk"
         - mobile_application_id: "7b54b434-59ea-4ef7-868b-12c9180842f7"
         - version_name: "$APPLICATION_VERSION_NAME"
-        - latest: "true"
+        - latest: true
     - datadog-mobile-app-run-tests@1:
         title: Run Android tests
         inputs:
         - api_key: $DATADOG_API_KEY
         - app_key: $DATADOG_APP_KEY
         - public_ids: "rxd-vdv-qce"
-        - fail_on_critical_errors: "true"
+        - fail_on_critical_errors: true
     - path::./:
         title: Upload iOS application
         inputs:
@@ -73,14 +73,14 @@ workflows:
         - mobile_application_version_file_path: "/bitrise/src/_tmp/SyntheticsMiniApp_2023_07_05_PR13.ipa"
         - mobile_application_id: "bcb5d107-5536-4fe5-a4a8-ea34a6c9bbee"
         - version_name: "$APPLICATION_VERSION_NAME"
-        - latest: "true"
+        - latest: true
     - datadog-mobile-app-run-tests@1:
         title: Run iOS tests
         inputs:
         - api_key: $DATADOG_API_KEY
         - app_key: $DATADOG_APP_KEY
         - public_ids: "bcq-y54-rq7"
-        - fail_on_critical_errors: "true"
+        - fail_on_critical_errors: true
 
   test-on-Xcode-stack:
     steps:
@@ -122,14 +122,14 @@ workflows:
         - mobile_application_version_file_path: "/bitrise/src/_tmp/Miniapp16-02-2024.apk"
         - mobile_application_id: "7b54b434-59ea-4ef7-868b-12c9180842f7"
         - version_name: "$APPLICATION_VERSION_NAME"
-        - latest: "true"
+        - latest: true
     - datadog-mobile-app-run-tests@1:
         title: Run Android tests
         inputs:
         - api_key: $DATADOG_API_KEY
         - app_key: $DATADOG_APP_KEY
         - public_ids: "rxd-vdv-qce"
-        - fail_on_critical_errors: "true"
+        - fail_on_critical_errors: true
     - path::./_tmp:
         title: Upload iOS application
         inputs:
@@ -138,14 +138,14 @@ workflows:
         - mobile_application_version_file_path: "/bitrise/src/_tmp/SyntheticsMiniApp_2023_07_05_PR13.ipa"
         - mobile_application_id: "bcb5d107-5536-4fe5-a4a8-ea34a6c9bbee"
         - version_name: "$APPLICATION_VERSION_NAME"
-        - latest: "true"
+        - latest: true
     - datadog-mobile-app-run-tests@1:
         title: Run iOS tests
         inputs:
         - api_key: $DATADOG_API_KEY
         - app_key: $DATADOG_APP_KEY
         - public_ids: "bcq-y54-rq7"
-        - fail_on_critical_errors: "true"
+        - fail_on_critical_errors: true
 
 
 
