@@ -10,14 +10,13 @@ app:
 
 trigger_map:
 - push_branch: '*'
-  # workflow: test-on-Ubuntu-stack
-  pipeline: pipeline-successful
+  pipeline: test-on-Ubuntu-and-Xcode-stacks
 pipelines:
-  pipeline-successful:
+  test-on-Ubuntu-and-Xcode-stacks:
     stages:
-    - stage-successful-1: {}
+    - test-stacks: {}
 stages:
-  stage-successful-1:
+  test-stacks:
     workflows:
     - test-on-Ubuntu-stack: {}
     - test-on-Xcode-stack: {}
@@ -26,10 +25,6 @@ stages:
 workflows:
   test-on-Ubuntu-stack:
     steps:
-    # - build-router-start@0:
-    #     inputs:
-    #     - access_token: $BITRISE_WEBHOOK_TOKEN
-    #     - workflows: test-on-Xcode-stack
     # - change-workdir:
     #     title: Switch working dir to test / _tmp dir
     #     description: |-
@@ -51,15 +46,6 @@ workflows:
             envman add --key APPLICATION_VERSION_NAME --value "$APPLICATION_VERSION_NAME"
     - activate-ssh-key@4: {}
     - git-clone@8: {}
-    - script:
-        title: stuff
-        is_always_run: true
-        inputs:
-        - content: |-
-            #!/bin/bash
-            pwd
-            ls -lha
-            ls ../ -lha
     - path::./:
         title: Upload Android application
         inputs:
@@ -88,15 +74,6 @@ workflows:
         - version_name: "$APPLICATION_VERSION_NAME"
         outputs:
         - DATADOG_UPLOADED_APPLICATION_VERSION_ID: DATADOG_UPLOADED_APPLICATION_VERSION_ID
-    - script:
-        title: more stuff
-        is_always_run: true
-        inputs:
-        - DATADOG_UPLOADED_APPLICATION_VERSION_ID: $DATADOG_UPLOADED_APPLICATION_VERSION_ID
-        - content: |-
-            #!/bin/bash
-            pwd
-            echo "DATADOG_UPLOADED_APPLICATION_VERSION_ID: $DATADOG_UPLOADED_APPLICATION_VERSION_ID"
     - datadog-mobile-app-run-tests@1:
         title: Run iOS tests
         inputs:
@@ -105,9 +82,6 @@ workflows:
         - public_ids: "bcq-y54-rq7"
         - mobile_application_version: $DATADOG_UPLOADED_APPLICATION_VERSION_ID
         - fail_on_critical_errors: true
-    # - build-router-wait@0:
-    #     inputs:
-    #     - access_token: $BITRISE_WEBHOOK_TOKEN
 
   test-on-Xcode-stack:
     steps:
@@ -132,15 +106,6 @@ workflows:
             envman add --key APPLICATION_VERSION_NAME --value "$APPLICATION_VERSION_NAME"
     - activate-ssh-key@4: {}
     - git-clone@8: {}
-    - script:
-        title: stuff
-        is_always_run: true
-        inputs:
-        - content: |-
-            #!/bin/bash
-            pwd
-            ls -lha
-            ls ../ -lha
     - path::./:
         title: Upload Android application
         inputs:
@@ -169,15 +134,6 @@ workflows:
         - version_name: "$APPLICATION_VERSION_NAME"
         outputs:
         - DATADOG_UPLOADED_APPLICATION_VERSION_ID: DATADOG_UPLOADED_APPLICATION_VERSION_ID
-    - script:
-        title: more stuff
-        is_always_run: true
-        inputs:
-        - DATADOG_UPLOADED_APPLICATION_VERSION_ID: $DATADOG_UPLOADED_APPLICATION_VERSION_ID
-        - content: |-
-            #!/bin/bash
-            pwd
-            echo "DATADOG_UPLOADED_APPLICATION_VERSION_ID: $DATADOG_UPLOADED_APPLICATION_VERSION_ID"
     - datadog-mobile-app-run-tests@1:
         title: Run iOS tests
         inputs:
