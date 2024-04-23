@@ -59,7 +59,7 @@ workflows:
         - version_name: "$APPLICATION_VERSION_NAME"
         - latest: true
         outputs:
-        - DATADOG_UPLOADED_APPLICATION_VERSION_ID: $DATADOG_UPLOADED_APPLICATION_VERSION_ID
+        - DATADOG_UPLOADED_APPLICATION_VERSION_ID: DATADOG_UPLOADED_APPLICATION_VERSION_ID
     - script:
         title: more stuff
         is_always_run: true
