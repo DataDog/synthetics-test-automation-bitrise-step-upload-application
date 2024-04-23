@@ -1,7 +1,6 @@
 # Datadog Continuous Testing for Bitrise
 
-<!-- TODO add link to marketplace after we publish the step -->
-<!-- [![Visual Studio Marketplace Version]()][1001]  -->
+![Bitrise](https://img.shields.io/bitrise/datadog-mobile-app-upload)
 [![Build Status](https://app.bitrise.io/app/2d252b25-8c31-427b-98e8-1d0b2bc484c1/status.svg?token=CiGeaNblC2veLBtAbTgmLQ&branch=main)](https://app.bitrise.io/app/2d252b25-8c31-427b-98e8-1d0b2bc484c1)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
@@ -47,7 +46,7 @@ envs:
 This task overrides the path to the global `datadog-ci.config.json` file.
 
 ```yml
-- git::https://github.com/DataDog/synthetics-test-automation-bitrise-step-run-tests.git:
+- datadog-mobile-app-upload@1: {}
    inputs:
    - api_key: $DATADOG_API_KEY
    - app_key: $DATADOG_APP_KEY
@@ -61,7 +60,7 @@ For an example configuration file, see the [`global.config.json` file][2001].
 For reference here's how a full configuration could look:
 
 ```yml
-- git::https://github.com/DataDog/synthetics-test-automation-bitrise-step-run-tests.git:
+- datadog-mobile-app-upload@1: {}
    inputs:
    - api_key: $DATADOG_API_KEY
    - app_key: $DATADOG_APP_KEY
@@ -82,10 +81,10 @@ For reference here's how a full configuration could look:
 | `appKey`                           | _required_  | Your Datadog application key. This key is created by your [Datadog organization][3003] and will be accessed as an environment variable. |
 | `configPath`                       | _optional_  | The global JSON configuration is used when launching tests. See the [example configuration][3002] for more details.                     |
 | `latest`                           | _optional_  | Marks the application as `latest`. Any tests that run on the latest version will use this version on their next run.                    |
-| `mobileApplicationVersionId`       | _optional_  | ID of the application you want to upload the new version to.                                                                            |
-| `mobileApplicationVersionFilePath` | _optional_  | Override the application version for Synthetic mobile application tests.                                                                |
+| `mobileApplicationVersionId`       | _required_  | ID of the application you want to upload the new version to.                                                                            |
+| `mobileApplicationVersionFilePath` | _required_  | Override the application version for Synthetic mobile application tests.                                                                |
 | `site`                             | _optional_  | The Datadog site to send data to. If the `DD_SITE` environment variable is set, it takes precedence.                                    |
-| `versionName`                      | _optional_  | Name of the new version. It has to be unique.                                                                                           |
+| `versionName`                      | _required_  | Name of the new version. It has to be unique.                                                                                           |
 
 ## Further reading
 
@@ -95,7 +94,7 @@ Additional helpful documentation, links, and articles:
 - [Best practices for continuous testing with Datadog][5001]
 
 <!-- Links to Marketplace -->
-[1001]: https://marketplace.visualstudio.com/items?itemName=Datadog.datadog-ci
+[1001]: https://bitrise.io/integrations/steps/datadog-mobile-app-upload
 
 <!-- Github links -->
 [2001]: https://github.com/DataDog/datadog-ci/blob/master/.github/workflows/e2e/global.config.json
