@@ -79,3 +79,8 @@ inputs:
       title: "Version Name"
       description: Name of the new version. It has to be unique.
       is_required: true
+  - DATADOG_UPLOADED_APPLICATION_VERSION_ID: $DATADOG_UPLOADED_APPLICATION_VERSION_ID
+    opts:
+      category: Outputs
+      title: "Datadog Uploaded Application Version ID"
+      description: The ID of the uploaded application version.
