@@ -10,16 +10,26 @@ app:
 
 trigger_map:
 - push_branch: '*'
-  workflow: test-on-Ubuntu-stack
+  # workflow: test-on-Ubuntu-stack
+  pipeline: pipeline-successful
+pipelines:
+  pipeline-successful:
+    stages:
+    - stage-successful-1: {}
+stages:
+  stage-successful-1:
+    workflows:
+    - test-on-Ubuntu-stack: {}
+    - test-on-Xcode-stack: {}
 
 
 workflows:
   test-on-Ubuntu-stack:
     steps:
-    - build-router-start@0:
-        inputs:
-        - access_token: $BITRISE_WEBHOOK_TOKEN
-        - workflows: test-on-Xcode-stack
+    # - build-router-start@0:
+    #     inputs:
+    #     - access_token: $BITRISE_WEBHOOK_TOKEN
+    #     - workflows: test-on-Xcode-stack
     # - change-workdir:
     #     title: Switch working dir to test / _tmp dir
     #     description: |-
@@ -95,9 +105,9 @@ workflows:
         - public_ids: "bcq-y54-rq7"
         - mobile_application_version: $DATADOG_UPLOADED_APPLICATION_VERSION_ID
         - fail_on_critical_errors: true
-    - build-router-wait@0:
-        inputs:
-        - access_token: $BITRISE_WEBHOOK_TOKEN
+    # - build-router-wait@0:
+    #     inputs:
+    #     - access_token: $BITRISE_WEBHOOK_TOKEN
 
   test-on-Xcode-stack:
     steps:
