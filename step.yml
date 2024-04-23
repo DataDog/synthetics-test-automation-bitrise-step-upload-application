@@ -81,6 +81,12 @@ inputs:
       is_required: true
   - DATADOG_UPLOADED_APPLICATION_VERSION_ID: $DATADOG_UPLOADED_APPLICATION_VERSION_ID
     opts:
-      category: Outputs
       title: "Datadog Uploaded Application Version ID"
       description: The ID of the uploaded application version.
+
+outputs:
+  - DATADOG_UPLOADED_APPLICATION_VERSION_ID: $DATADOG_UPLOADED_APPLICATION_VERSION_ID
+    opts:
+      title: "Datadog Uploaded Application Version ID"
+      description: The ID of the uploaded application version.
+      is_expand: true
