@@ -49,6 +49,7 @@ UploadApplication() {
     if [[ $output =~ ([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})$ ]]; then
         version_id=${BASH_REMATCH[1]}
         echo "Extracted Version ID: $version_id"
+        export DATADOG_SYNTHETICS_CI_APPLICATION_VERSION_ID=$version_id
     else
         echo "No Version ID found in the output."
     fi
