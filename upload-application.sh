@@ -44,7 +44,7 @@ UploadApplication() {
         $DATADOG_CI_COMMAND synthetics upload-application \
         "${args[@]}")
 
-    echo "This is the output: $output"
+    echo $output
 
     if [[ $output =~ ([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})$ ]]; then
         version_id=${BASH_REMATCH[1]}
