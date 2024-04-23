@@ -10,10 +10,10 @@ app:
 
 trigger_map:
 - push_branch: '*'
-  workflow: test
+  workflow: test-on-ubuntu-stack
 
 workflows:
-  test:
+  test-on-ubuntu-stack:
     steps:
     - change-workdir:
         title: Switch working dir to test / _tmp dir
