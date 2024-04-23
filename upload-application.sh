@@ -54,6 +54,9 @@ UploadApplication() {
     else
         echo "No Version ID found in the output."
     fi
+
+    echo "it sets it right?"
+    env | grep DATADOG_SYNTHETICS_CI_APPLICATION_VERSION_ID
 }
 
 # Will not run if sourced for bats-core tests.
