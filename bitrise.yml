@@ -64,6 +64,7 @@ workflows:
         title: more stuff
         is_always_run: true
         inputs:
+        - DATADOG_UPLOADED_APPLICATION_VERSION_ID: $DATADOG_UPLOADED_APPLICATION_VERSION_ID
         - content: |-
             #!/bin/bash
             pwd
