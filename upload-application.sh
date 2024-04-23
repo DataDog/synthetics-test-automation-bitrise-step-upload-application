@@ -49,14 +49,14 @@ UploadApplication() {
     if [[ $output =~ ([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})$ ]]; then
         version_id=${BASH_REMATCH[1]}
         echo "Extracted Version ID: $version_id"
-        export DATADOG_SYNTHETICS_CI_APPLICATION_VERSION_ID=$version_id
-        envman add --key DATADOG_SYNTHETICS_CI_APPLICATION_VERSION_ID --value "$version_id"
+        export DATADOG_UPLOADED_APPLICATION_VERSION_ID=$version_id
+        envman add --key DATADOG_UPLOADED_APPLICATION_VERSION_ID --value "$version_id"
     else
         echo "No Version ID found in the output."
     fi
 
     echo "it sets it right?"
-    env | grep DATADOG_SYNTHETICS_CI_APPLICATION_VERSION_ID
+    env | grep DATADOG_UPLOADED_APPLICATION_VERSION_ID
 }
 
 # Will not run if sourced for bats-core tests.
