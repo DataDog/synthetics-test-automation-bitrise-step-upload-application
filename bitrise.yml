@@ -13,7 +13,7 @@ trigger_map:
   workflow: test
 
 workflows:
-  test-on-ubuntu-stack:
+  test:
     steps:
     - change-workdir:
         title: Switch working dir to test / _tmp dir
