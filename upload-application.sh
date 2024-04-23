@@ -36,13 +36,22 @@ UploadApplication() {
         args+=(--latest)
     fi
 
-    DATADOG_API_KEY="${api_key}" \
+    output=$(DATADOG_API_KEY="${api_key}" \
     DATADOG_APP_KEY="${app_key}" \
     DATADOG_SUBDOMAIN="app" \
     DATADOG_SITE="${site}" \
     DATADOG_SYNTHETICS_CI_TRIGGER_APP="bitrise_step" \
         $DATADOG_CI_COMMAND synthetics upload-application \
-        "${args[@]}"
+        "${args[@]}")
+
+    echo "This is the output: $output"
+
+    if [[ $output =~ ([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})$ ]]; then
+        version_id=${BASH_REMATCH[1]}
+        echo "Extracted Version ID: $version_id"
+    else
+        echo "No Version ID found in the output."
+    fi
 }
 
 # Will not run if sourced for bats-core tests.
