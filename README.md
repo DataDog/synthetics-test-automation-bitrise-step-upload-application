@@ -6,7 +6,7 @@
 
 [Bitrise Marketplace Link][1001]
 
-# Overview
+## Overview
 
 With the `synthetics-test-automation-bitrise-step-upload-application` step, you can upload a new version of your application to Datadog to run Synthetics tests against during your Bitrise CI and ensure all your teams using Bitrise can benefit from Synthetic tests at every stage of the software lifecycle. This step uses the [Datadog CI Synthetics command][2002]. Your application already needs to exist for this to work.
 
@@ -27,14 +27,14 @@ To get started:
 1. Open up your Terminal / Command Line
 2. `git clone` the repository
 3. `cd` into the directory of the step (the one you just `git clone`d)
-5. Create a `.bitrise.secrets.yml` file in the same directory of `bitrise.yml`
+4. Create a `.bitrise.secrets.yml` file in the same directory of `bitrise.yml`
    (the `.bitrise.secrets.yml` is a git ignored file, you can store your secrets in it)
-6. Check the `bitrise.yml` file for any secret you should set in `.bitrise.secrets.yml`
-7. Once you have the required secret parameters in your `.bitrise.secrets.yml`, run this step with the [Bitrise CLI][2003]: `bitrise run test`.
+5. Check the `bitrise.yml` file for any secret you should set in `.bitrise.secrets.yml`
+6. Once you have the required secret parameters in your `.bitrise.secrets.yml`, run this step with the [Bitrise CLI][2003]: `bitrise run test`.
 
 An example `.bitrise.secrets.yml` file:
 
-```
+```yml
 envs:
 - A_SECRET_PARAM_ONE: the value for secret one
 - A_SECRET_PARAM_TWO: the value for secret two
@@ -74,7 +74,6 @@ For reference here's how a full configuration could look:
    - version_name: 'example 1.0'
 ```
 
-
 ## Inputs
 
 | Name                               | Requirement | Description                                                                                                                             |
@@ -88,6 +87,12 @@ For reference here's how a full configuration could look:
 | `site`                             | _optional_  | The Datadog site to send data to. If the `DD_SITE` environment variable is set, it takes precedence.                                    |
 | `versionName`                      | _required_  | Name of the new version. It has to be unique.                                                                                           |
 
+## Outputs
+
+| Name                                      | Description                                                                                                                                                                                               |
+| ------------------------------------------| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `DATADOG_UPLOADED_APPLICATION_VERSION_ID` | The version ID of the application that was just uploaded. Pass it to the [`datadog-mobile-app-run-tests` step][1002] with the `mobile_application_version` input to test this version of the application. |
+
 ## Further reading
 
 Additional helpful documentation, links, and articles:
@@ -97,6 +102,7 @@ Additional helpful documentation, links, and articles:
 
 <!-- Links to Marketplace -->
 [1001]: https://bitrise.io/integrations/steps/datadog-mobile-app-upload
+[1002]: https://bitrise.io/integrations/steps/datadog-mobile-app-run-tests
 
 <!-- Github links -->
 [2001]: https://github.com/DataDog/datadog-ci/blob/master/.github/workflows/e2e/global.config.json
