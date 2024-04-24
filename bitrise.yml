@@ -45,6 +45,13 @@ workflows:
             echo "Generated version_name: $APPLICATION_VERSION_NAME"
             envman add --key APPLICATION_VERSION_NAME --value "$APPLICATION_VERSION_NAME"
     - activate-ssh-key@4: {}
+    - script:
+        inputs:
+        - content: |-
+            #!/bin/bash
+            pwd
+            ls -lha
+            echo $BITRISE_SOURCE_DIR
     - git-clone@8:
         inputs:
         - clone_into_dir: ./
