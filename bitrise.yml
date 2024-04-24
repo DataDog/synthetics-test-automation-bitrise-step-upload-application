@@ -37,12 +37,6 @@ workflows:
         - path: ./_tmp
         - is_create_path: true
     - script:
-        inputs:
-        - content: |-
-            #!/bin/bash
-            pwd
-            ls -lha
-    - script:
         title: Generate version name from timestamp
         inputs:
         - content: |-
@@ -51,7 +45,16 @@ workflows:
             echo "Generated version_name: $APPLICATION_VERSION_NAME"
             envman add --key APPLICATION_VERSION_NAME --value "$APPLICATION_VERSION_NAME"
     - activate-ssh-key@4: {}
-    - git-clone@8: {}
+    - git-clone@8:
+        inputs:
+        - clone_into_dir: ./
+    - script:
+        inputs:
+        - content: |-
+            #!/bin/bash
+            pwd
+            ls -lha
+            echo $BITRISE_SOURCE_DIR
     - path::./:
         title: Upload Android application
         inputs:
