@@ -21,6 +21,10 @@ stages:
     - test-on-Ubuntu-stack: {}
     - test-on-Xcode-stack: {}
 
+meta:
+  bitrise.io:
+    stack: linux-docker-android-22.04
+    machine_type_id: standard
 
 workflows:
   test-on-Ubuntu-stack:
@@ -120,6 +124,10 @@ workflows:
         - public_ids: "bcq-y54-rq7"
         - mobile_application_version: $DATADOG_UPLOADED_APPLICATION_VERSION_ID
         - fail_on_critical_errors: true
+    meta:
+      bitrise.io:
+        stack: osx-xcode-edge
+        machine_type_id: g2-m1.4core
 
 
 
