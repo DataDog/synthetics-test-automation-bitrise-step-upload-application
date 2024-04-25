@@ -1,11 +1,12 @@
 # Datadog Continuous Testing for Bitrise
 
-<!-- TODO add link to marketplace after we publish the step -->
-<!-- [![Visual Studio Marketplace Version]()][1001]  -->
+![GitHub Release](https://img.shields.io/github/v/release/DataDog/synthetics-test-automation-bitrise-step-upload-application)
 [![Build Status](https://app.bitrise.io/app/2d252b25-8c31-427b-98e8-1d0b2bc484c1/status.svg?token=CiGeaNblC2veLBtAbTgmLQ&branch=main)](https://app.bitrise.io/app/2d252b25-8c31-427b-98e8-1d0b2bc484c1)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-# Overview
+[Bitrise Marketplace Link][1001]
+
+## Overview
 
 With the `synthetics-test-automation-bitrise-step-upload-application` step, you can upload a new version of your application to Datadog to run Synthetics tests against during your Bitrise CI and ensure all your teams using Bitrise can benefit from Synthetic tests at every stage of the software lifecycle. This step uses the [Datadog CI Synthetics command][2002]. Your application already needs to exist for this to work.
 
@@ -26,14 +27,14 @@ To get started:
 1. Open up your Terminal / Command Line
 2. `git clone` the repository
 3. `cd` into the directory of the step (the one you just `git clone`d)
-5. Create a `.bitrise.secrets.yml` file in the same directory of `bitrise.yml`
+4. Create a `.bitrise.secrets.yml` file in the same directory of `bitrise.yml`
    (the `.bitrise.secrets.yml` is a git ignored file, you can store your secrets in it)
-6. Check the `bitrise.yml` file for any secret you should set in `.bitrise.secrets.yml`
-7. Once you have the required secret parameters in your `.bitrise.secrets.yml`, run this step with the [Bitrise CLI][2003]: `bitrise run test`.
+5. Check the `bitrise.yml` file for any secret you should set in `.bitrise.secrets.yml`
+6. Once you have the required secret parameters in your `.bitrise.secrets.yml`, run this step with the [Bitrise CLI][2003]: `bitrise run test`.
 
 An example `.bitrise.secrets.yml` file:
 
-```
+```yml
 envs:
 - A_SECRET_PARAM_ONE: the value for secret one
 - A_SECRET_PARAM_TWO: the value for secret two
@@ -47,7 +48,7 @@ envs:
 This task overrides the path to the global `datadog-ci.config.json` file.
 
 ```yml
-- git::https://github.com/DataDog/synthetics-test-automation-bitrise-step-run-tests.git:
+- datadog-mobile-app-upload@1:
    inputs:
    - api_key: $DATADOG_API_KEY
    - app_key: $DATADOG_APP_KEY
@@ -61,7 +62,7 @@ For an example configuration file, see the [`global.config.json` file][2001].
 For reference here's how a full configuration could look:
 
 ```yml
-- git::https://github.com/DataDog/synthetics-test-automation-bitrise-step-run-tests.git:
+- datadog-mobile-app-upload@1:
    inputs:
    - api_key: $DATADOG_API_KEY
    - app_key: $DATADOG_APP_KEY
@@ -73,7 +74,6 @@ For reference here's how a full configuration could look:
    - version_name: 'example 1.0'
 ```
 
-
 ## Inputs
 
 | Name                               | Requirement | Description                                                                                                                             |
@@ -82,10 +82,16 @@ For reference here's how a full configuration could look:
 | `appKey`                           | _required_  | Your Datadog application key. This key is created by your [Datadog organization][3003] and will be accessed as an environment variable. |
 | `configPath`                       | _optional_  | The global JSON configuration is used when launching tests. See the [example configuration][3002] for more details.                     |
 | `latest`                           | _optional_  | Marks the application as `latest`. Any tests that run on the latest version will use this version on their next run.                    |
-| `mobileApplicationVersionId`       | _optional_  | ID of the application you want to upload the new version to.                                                                            |
-| `mobileApplicationVersionFilePath` | _optional_  | Override the application version for Synthetic mobile application tests.                                                                |
+| `mobileApplicationVersionId`       | _required_  | ID of the application you want to upload the new version to.                                                                            |
+| `mobileApplicationVersionFilePath` | _required_  | Override the application version for Synthetic mobile application tests.                                                                |
 | `site`                             | _optional_  | The Datadog site to send data to. If the `DD_SITE` environment variable is set, it takes precedence.                                    |
-| `versionName`                      | _optional_  | Name of the new version. It has to be unique.                                                                                           |
+| `versionName`                      | _required_  | Name of the new version. It has to be unique.                                                                                           |
+
+## Outputs
+
+| Name                                      | Description                                                                                                                                                                                               |
+| ------------------------------------------| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `DATADOG_UPLOADED_APPLICATION_VERSION_ID` | The version ID of the application that was just uploaded. Pass it to the [`datadog-mobile-app-run-tests` step][1002] with the `mobile_application_version` input to test this version of the application. |
 
 ## Further reading
 
@@ -95,7 +101,8 @@ Additional helpful documentation, links, and articles:
 - [Best practices for continuous testing with Datadog][5001]
 
 <!-- Links to Marketplace -->
-[1001]: https://marketplace.visualstudio.com/items?itemName=Datadog.datadog-ci
+[1001]: https://bitrise.io/integrations/steps/datadog-mobile-app-upload
+[1002]: https://bitrise.io/integrations/steps/datadog-mobile-app-run-tests
 
 <!-- Github links -->
 [2001]: https://github.com/DataDog/datadog-ci/blob/master/.github/workflows/e2e/global.config.json
