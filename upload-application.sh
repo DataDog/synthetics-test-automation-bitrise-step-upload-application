@@ -1,3 +1,5 @@
+echo "Running upload-application.sh"
+
 UploadApplication() {
     if [[ -n "${DD_SITE}" ]]; then
         site=${DD_SITE}
@@ -7,9 +9,11 @@ UploadApplication() {
 
     unamestr=$(uname)
 
+    echo "Downloading datadog-ci version ${DATADOG_CI_VERSION} for ${unamestr}"
     # Not run when running unit tests.
     if [[ -z "${DATADOG_CI_COMMAND}" ]]; then
         if [[ "$unamestr" == 'Darwin' ]]; then
+            echo "Downloading datadog-ci for macOS"
             curl -L --fail "https://github.com/DataDog/datadog-ci/releases/download/v${DATADOG_CI_VERSION}/datadog-ci_darwin-x64" --output "./datadog-ci"
         elif [[ "$unamestr" == 'Linux' ]]; then
             curl -L --fail "https://github.com/DataDog/datadog-ci/releases/download/v${DATADOG_CI_VERSION}/datadog-ci_linux-x64" --output "./datadog-ci"
@@ -36,6 +40,7 @@ UploadApplication() {
         args+=(--latest)
     fi
 
+    echo "Uploading application with args: ${args[@]}"
     output=$(DATADOG_API_KEY="${api_key}" \
     DATADOG_APP_KEY="${app_key}" \
     DATADOG_SUBDOMAIN="app" \
