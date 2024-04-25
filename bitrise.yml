@@ -95,7 +95,7 @@ workflows:
             set -ex
             pwd
             ls -la
-    - path::./:
+    - path::./Users/vagrant/git:
         title: Upload Android application
         inputs:
         - api_key: $DATADOG_API_KEY
@@ -113,7 +113,7 @@ workflows:
         - public_ids: "rxd-vdv-qce"
         - mobile_application_version: $DATADOG_UPLOADED_APPLICATION_VERSION_ID
         - fail_on_critical_errors: true
-    - path::./:
+    - path::./Users/vagrant/git:
         title: Upload iOS application
         inputs:
         - api_key: $DATADOG_API_KEY
