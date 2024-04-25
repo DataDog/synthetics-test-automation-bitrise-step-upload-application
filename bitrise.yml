@@ -88,13 +88,6 @@ workflows:
             envman add --key APPLICATION_VERSION_NAME --value "$APPLICATION_VERSION_NAME"
     - activate-ssh-key@4: {}
     - git-clone@8: {}
-    - script:
-        inputs:
-        - content: |-
-            #!/bin/bash
-            set -ex
-            pwd
-            ls -la
     - path::./Users/vagrant/git:
         title: Upload Android application
         inputs:
