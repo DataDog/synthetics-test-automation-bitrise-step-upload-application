@@ -45,6 +45,7 @@ UploadApplication() {
         "${args[@]}")
 
     echo "exit code: $?"
+    command_exit_code=$?
     
     echo $output
 
@@ -57,6 +58,7 @@ UploadApplication() {
     fi
 
     echo "exit code: $?"
+    exit $command_exit_code
 }
 
 # Will not run if sourced for bats-core tests.
