@@ -45,8 +45,6 @@ UploadApplication() {
         "${args[@]}")
 
     command_exit_code=$?
-    echo "exit code: $?"
-    
     echo $output
 
     if [[ $output =~ ([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})$ ]]; then
@@ -57,8 +55,6 @@ UploadApplication() {
         echo "No Version ID found in the output."
     fi
 
-    echo "exit code: $?"
-    echo "Command exit code: $command_exit_code"
     exit $command_exit_code
 }
 
