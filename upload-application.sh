@@ -58,6 +58,7 @@ UploadApplication() {
     fi
 
     echo "exit code: $?"
+    echo "Command exit code: $command_exit_code"
     exit $command_exit_code
 }
 
