@@ -44,8 +44,8 @@ UploadApplication() {
         $DATADOG_CI_COMMAND synthetics upload-application \
         "${args[@]}")
 
-    echo "exit code: $?"
     command_exit_code=$?
+    echo "exit code: $?"
     
     echo $output
 
