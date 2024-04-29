@@ -77,6 +77,10 @@ workflows:
         - fail_on_critical_errors: true
 
   test-on-Xcode-stack:
+    meta:
+      bitrise.io:
+        stack: osx-xcode-edge
+        machine_type_id: g2-m1.4core
     steps:
     - script:
         title: Generate version name from timestamp
@@ -124,10 +128,6 @@ workflows:
         - public_ids: "bcq-y54-rq7"
         - mobile_application_version: $DATADOG_UPLOADED_APPLICATION_VERSION_ID
         - fail_on_critical_errors: true
-    meta:
-      bitrise.io:
-        stack: osx-xcode-edge
-        machine_type_id: g2-m1.4core
 
 
 
