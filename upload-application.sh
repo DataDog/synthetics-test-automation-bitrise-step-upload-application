@@ -44,6 +44,7 @@ UploadApplication() {
         $DATADOG_CI_COMMAND synthetics upload-application \
         "${args[@]}")
 
+    command_exit_code=$?
     echo $output
 
     if [[ $output =~ ([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})$ ]]; then
@@ -53,6 +54,8 @@ UploadApplication() {
     else
         echo "No Version ID found in the output."
     fi
+
+    exit $command_exit_code
 }
 
 # Will not run if sourced for bats-core tests.

@@ -21,6 +21,10 @@ stages:
     - test-on-Ubuntu-stack: {}
     - test-on-Xcode-stack: {}
 
+meta:
+  bitrise.io:
+    stack: linux-docker-android-22.04
+    machine_type_id: standard
 
 workflows:
   test-on-Ubuntu-stack:
@@ -73,6 +77,10 @@ workflows:
         - fail_on_critical_errors: true
 
   test-on-Xcode-stack:
+    meta:
+      bitrise.io:
+        stack: osx-xcode-edge
+        machine_type_id: g2-m1.4core
     steps:
     - script:
         title: Generate version name from timestamp
@@ -84,12 +92,12 @@ workflows:
             envman add --key APPLICATION_VERSION_NAME --value "$APPLICATION_VERSION_NAME"
     - activate-ssh-key@4: {}
     - git-clone@8: {}
-    - path::./:
+    - path::/Users/vagrant/git:
         title: Upload Android application
         inputs:
         - api_key: $DATADOG_API_KEY
         - app_key: $DATADOG_APP_KEY
-        - mobile_application_version_file_path: "/bitrise/src/example-app.apk"
+        - mobile_application_version_file_path: "/Users/vagrant/git/example-app.apk"
         - mobile_application_id: "7b54b434-59ea-4ef7-868b-12c9180842f7"
         - version_name: "$APPLICATION_VERSION_NAME"
         outputs:
@@ -102,12 +110,12 @@ workflows:
         - public_ids: "rxd-vdv-qce"
         - mobile_application_version: $DATADOG_UPLOADED_APPLICATION_VERSION_ID
         - fail_on_critical_errors: true
-    - path::./:
+    - path::/Users/vagrant/git:
         title: Upload iOS application
         inputs:
         - api_key: $DATADOG_API_KEY
         - app_key: $DATADOG_APP_KEY
-        - mobile_application_version_file_path: "/bitrise/src/example-app.ipa"
+        - mobile_application_version_file_path: "/Users/vagrant/git/example-app.ipa"
         - mobile_application_id: "bcb5d107-5536-4fe5-a4a8-ea34a6c9bbee"
         - version_name: "$APPLICATION_VERSION_NAME"
         outputs:
