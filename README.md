@@ -47,8 +47,8 @@ This task overrides the path to the global `datadog-ci.config.json` file.
 ```yml
 - datadog-mobile-app-upload@1:
    inputs:
-   - api_key: $DATADOG_API_KEY
-   - app_key: $DATADOG_APP_KEY
+   - api_key: <DATADOG_API_KEY>
+   - app_key: <DATADOG_APP_KEY>
    - config_path: './synthetics-config.json'
 ```
 
@@ -61,8 +61,8 @@ For reference, this is an example of a complete configuration:
 ```yml
 - datadog-mobile-app-upload@1:
    inputs:
-   - api_key: $DATADOG_API_KEY
-   - app_key: $DATADOG_APP_KEY
+   - api_key: <DATADOG_API_KEY>
+   - app_key: <DATADOG_APP_KEY>
    - config_path: './global.config.json'
    - latest: true
    - mobile_application_version_id: '123-123-123'
