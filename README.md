@@ -67,7 +67,7 @@ For reference, this is an example of a complete configuration:
    - latest: true
    - mobile_application_version_id: '123-123-123'
    - mobile_application_version_file_path: 'path/to/application.apk'
-   - site: {{< region-param key="dd_site" code="true" >}}
+   - site: 'datadoghq.com'
    - version_name: 'example 1.0'
 ```
 
@@ -81,7 +81,7 @@ For reference, this is an example of a complete configuration:
 | `latest`                           | _optional_  | Marks the application as `latest`. Any tests that run on the latest version will use this version on their next run.                    |
 | `mobileApplicationVersionId`       | _required_  | ID of the application you want to upload the new version to.                                                                            |
 | `mobileApplicationVersionFilePath` | _required_  | Override the application version for [Synthetic mobile application tests][15].                                                                |
-| `site`                             | _optional_  | The [Datadog site][14] to send data to. Your default site is {{< region-param key="dd_site" code="true" >}}. If the `DD_SITE` environment variable is set, it takes precedence.                                    |
+| `site`                             | _optional_  | The [Datadog site][14] to send data to. <!-- partial Your Datadog site is {{< region-param key="dd_site" code="true" >}}. partial -->. If the `DD_SITE` environment variable is set, it takes precedence.                                    |
 | `versionName`                      | _required_  | Name of the new version. It has to be unique.                                                                                           |
 
 ## Outputs
