@@ -50,12 +50,12 @@ workflows:
         outputs:
         - DATADOG_UPLOADED_APPLICATION_VERSION_ID: DATADOG_UPLOADED_APPLICATION_VERSION_ID
     - script:
-      title: Look around
-      inputs:
-      - content: |-
-          #!/bin/bash
-          pwd
-          ls -lha
+        title: Look around
+        inputs:
+        - content: |-
+            #!/bin/bash
+            pwd
+            ls -lha
     - datadog-mobile-app-run-tests@1:
         title: Run Android tests
         inputs:
