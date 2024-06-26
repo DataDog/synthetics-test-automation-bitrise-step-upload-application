@@ -37,9 +37,9 @@ workflows:
             export APPLICATION_VERSION_NAME="$(date +%s)"
             echo "Generated version_name: $APPLICATION_VERSION_NAME"
             envman add --key APPLICATION_VERSION_NAME --value "$APPLICATION_VERSION_NAME"
-    - activate-ssh-key@4: {}
-    - git-clone@8: {}
-    - path::./:
+    # - activate-ssh-key@4: {}
+    # - git-clone@8: {}
+    - git::https://github.com/DataDog/synthetics-test-automation-bitrise-step-upload-application.git:
         title: Upload Android application
         inputs:
         - api_key: $DATADOG_API_KEY
@@ -49,6 +49,13 @@ workflows:
         - version_name: "$APPLICATION_VERSION_NAME"
         outputs:
         - DATADOG_UPLOADED_APPLICATION_VERSION_ID: DATADOG_UPLOADED_APPLICATION_VERSION_ID
+    - script:
+      title: Look around
+      inputs:
+      - content: |-
+          #!/bin/bash
+          pwd
+          ls -lha
     - datadog-mobile-app-run-tests@1:
         title: Run Android tests
         inputs:
