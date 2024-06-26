@@ -57,6 +57,8 @@ workflows:
             #!/bin/bash
             pwd
             ls -lha
+            cd  datadog-ci
+            ls -lha
     - datadog-mobile-app-run-tests@1:
         title: Run Android tests
         inputs:
