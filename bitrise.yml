@@ -59,7 +59,7 @@ workflows:
             ls -lha
             cd  datadog-ci
             ls -lha
-    - datadog-mobile-app-run-tests@1:
+    - git::https://github.com/DataDog/synthetics-test-automation-bitrise-step-run-tests.git:
         title: Run Android tests
         inputs:
         - api_key: $DATADOG_API_KEY
