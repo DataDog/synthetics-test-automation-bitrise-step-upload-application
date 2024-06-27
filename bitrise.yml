@@ -67,7 +67,7 @@ workflows:
         - public_ids: "rxd-vdv-qce"
         - mobile_application_version: $DATADOG_UPLOADED_APPLICATION_VERSION_ID
         - fail_on_critical_errors: true
-    - path::./:
+    - git::https://github.com/DataDog/synthetics-test-automation-bitrise-step-upload-application.git:
         title: Upload iOS application
         inputs:
         - api_key: $DATADOG_API_KEY
@@ -77,7 +77,7 @@ workflows:
         - version_name: "$APPLICATION_VERSION_NAME"
         outputs:
         - DATADOG_UPLOADED_APPLICATION_VERSION_ID: DATADOG_UPLOADED_APPLICATION_VERSION_ID
-    - datadog-mobile-app-run-tests@1:
+    - git::https://github.com/DataDog/synthetics-test-automation-bitrise-step-run-tests.git:
         title: Run iOS tests
         inputs:
         - api_key: $DATADOG_API_KEY
@@ -102,7 +102,7 @@ workflows:
             envman add --key APPLICATION_VERSION_NAME --value "$APPLICATION_VERSION_NAME"
     - activate-ssh-key@4: {}
     - git-clone@8: {}
-    - path::/Users/vagrant/git:
+    - git::https://github.com/DataDog/synthetics-test-automation-bitrise-step-upload-application.git:
         title: Upload Android application
         inputs:
         - api_key: $DATADOG_API_KEY
@@ -112,7 +112,7 @@ workflows:
         - version_name: "$APPLICATION_VERSION_NAME"
         outputs:
         - DATADOG_UPLOADED_APPLICATION_VERSION_ID: DATADOG_UPLOADED_APPLICATION_VERSION_ID
-    - datadog-mobile-app-run-tests@1:
+    - git::https://github.com/DataDog/synthetics-test-automation-bitrise-step-run-tests.git:
         title: Run Android tests
         inputs:
         - api_key: $DATADOG_API_KEY
@@ -120,7 +120,7 @@ workflows:
         - public_ids: "rxd-vdv-qce"
         - mobile_application_version: $DATADOG_UPLOADED_APPLICATION_VERSION_ID
         - fail_on_critical_errors: true
-    - path::/Users/vagrant/git:
+    - git::https://github.com/DataDog/synthetics-test-automation-bitrise-step-upload-application.git:
         title: Upload iOS application
         inputs:
         - api_key: $DATADOG_API_KEY
@@ -130,7 +130,7 @@ workflows:
         - version_name: "$APPLICATION_VERSION_NAME"
         outputs:
         - DATADOG_UPLOADED_APPLICATION_VERSION_ID: DATADOG_UPLOADED_APPLICATION_VERSION_ID
-    - datadog-mobile-app-run-tests@1:
+    - git::https://github.com/DataDog/synthetics-test-automation-bitrise-step-run-tests.git:
         title: Run iOS tests
         inputs:
         - api_key: $DATADOG_API_KEY
