@@ -10,13 +10,15 @@ With the `synthetics-test-automation-bitrise-step-upload-application` step, you 
 
 ## Setup
 
-This step is not available on the official Bitrise Step Library
+This step is not available on the official Bitrise Step Library.
 To get started:
 
-1. Add the following git URL to your workflow, see the [official Bitrise documentation][3] to see how to do this though the Bitrise app. You can also configure it locally by referencing the git URL in your `bitrise.yml` file.
-```
+1. Add the following git URL to your workflow, see the [official Bitrise documentation][3] to see how to do that though the Bitrise app. You can also configure it locally by referencing the git URL in your `bitrise.yml` file.
+
+```yml
 - git::https://github.com/DataDog/synthetics-test-automation-bitrise-step-upload-application.git:
 ```
+
 2. Add your API and application keys to your [secrets in Bitrise][4].
 3. [Configure your step inputs][5]. You can also configure them in your `bitrise.yml` file. The only required inputs are the two secrets you configured earlier. For a comprehensive list of inputs, see the [Inputs section](#inputs).
 
