@@ -49,16 +49,6 @@ workflows:
         - version_name: "$APPLICATION_VERSION_NAME"
         outputs:
         - DATADOG_UPLOADED_APPLICATION_VERSION_ID: DATADOG_UPLOADED_APPLICATION_VERSION_ID
-    - script:
-        title: Look around
-        is_always_run: true
-        inputs:
-        - content: |-
-            #!/bin/bash
-            pwd
-            ls -lha
-            cd  datadog-ci
-            ls -lha
     - git::https://github.com/DataDog/synthetics-test-automation-bitrise-step-run-tests.git:
         title: Run Android tests
         inputs:
