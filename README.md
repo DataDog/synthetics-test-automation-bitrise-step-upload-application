@@ -13,7 +13,7 @@ With the `synthetics-test-automation-bitrise-step-upload-application` step, you 
 This step is not available on the official Bitrise Step Library.
 To get started:
 
-1. Add the following git URL to your workflow, see the [official Bitrise documentation][3] to see how to do that though the Bitrise app. You can also configure it locally by referencing the git URL in your `bitrise.yml` file.
+1. Add the following git URL to your workflow. See the [official Bitrise documentation][3] on how to do that though the Bitrise app. You can also configure it locally by referencing the git URL in your `bitrise.yml` file.
 
 ```yml
 - git::https://github.com/DataDog/synthetics-test-automation-bitrise-step-upload-application.git:
