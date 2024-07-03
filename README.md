@@ -6,13 +6,19 @@
 
 ## Overview
 
-With the [`synthetics-test-automation-bitrise-step-upload-application` step][1], you can upload a new version of your application to Datadog to run Synthetic tests against during your Bitrise CI, ensuring that all your teams using Bitrise can benefit from Synthetic tests at every stage of the software lifecycle. This step uses the [Datadog CI Synthetics command][2], and requires that your application already exists.
+With the `synthetics-test-automation-bitrise-step-upload-application` step, you can upload a new version of your application to Datadog to run Synthetic tests against during your Bitrise CI, ensuring that all your teams using Bitrise can benefit from Synthetic tests at every stage of the software lifecycle. This step uses the [Datadog CI Synthetics command][2], and requires that your application already exists.
 
 ## Setup
 
+This step is not available on the official Bitrise Step Library.
 To get started:
 
-1. Add this step to your workflow. You can also configure it locally by referencing this step in your `bitrise.yml` file. For more information, see the [official Bitrise documentation][3].
+1. Add the following git URL to your workflow. See the [official Bitrise documentation][3] on how to do that though the Bitrise app. You can also configure it locally by referencing the git URL in your `bitrise.yml` file.
+
+```yml
+- git::https://github.com/DataDog/synthetics-test-automation-bitrise-step-upload-application.git@1.0.2:
+```
+
 2. Add your API and application keys to your [secrets in Bitrise][4].
 3. [Configure your step inputs][5]. You can also configure them in your `bitrise.yml` file. The only required inputs are the two secrets you configured earlier. For a comprehensive list of inputs, see the [Inputs section](#inputs).
 
@@ -41,11 +47,10 @@ envs:
 
 ### Example task using a global configuration override with `configPath`
 
-<!-- TODO: change git urls to step references after we publish it -->
 This task overrides the path to the global `datadog-ci.config.json` file.
 
 ```yml
-- datadog-mobile-app-upload@1:
+- git::https://github.com/DataDog/synthetics-test-automation-bitrise-step-upload-application.git@1.0.2:
    inputs:
    - api_key: <DATADOG_API_KEY>
    - app_key: <DATADOG_APP_KEY>
@@ -59,7 +64,7 @@ For an example configuration file, see the [`global.config.json` file][7].
 For reference, this is an example of a complete configuration:
 
 ```yml
-- datadog-mobile-app-upload@1:
+- git::https://github.com/DataDog/synthetics-test-automation-bitrise-step-upload-application.git@1.0.2:
    inputs:
    - api_key: <DATADOG_API_KEY>
    - app_key: <DATADOG_APP_KEY>
@@ -101,7 +106,7 @@ Additional helpful documentation, links, and articles:
 <!-- Links to Marketplace -->
 [1]: https://bitrise.io/integrations/steps/datadog-mobile-app-upload
 [2]: https://docs.datadoghq.com/continuous_testing/cicd_integrations/configuration/?tab=npm#run-tests
-[3]: https://devcenter.bitrise.io/en/steps-and-workflows/introduction-to-steps/adding-steps-to-a-workflow.html
+[3]: https://devcenter.bitrise.io/en/steps-and-workflows/introduction-to-steps/adding-steps-to-a-workflow.html#adding-steps-from-alternative-sources
 [4]: https://devcenter.bitrise.io/en/builds/secrets.html#setting-a-secret
 [5]: https://devcenter.bitrise.io/en/steps-and-workflows/introduction-to-steps/step-inputs.html
 [6]: https://github.com/bitrise-io/bitrise
