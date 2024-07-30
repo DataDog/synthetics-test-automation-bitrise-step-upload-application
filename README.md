@@ -1,7 +1,7 @@
 # Datadog Continuous Testing for Bitrise
 
 ![GitHub Release](https://img.shields.io/github/v/release/DataDog/synthetics-test-automation-bitrise-step-upload-application)
-[![Build Status](https://app.bitrise.io/app/2d252b25-8c31-427b-98e8-1d0b2bc484c1/status.svg?token=CiGeaNblC2veLBtAbTgmLQ&branch=main)](https://app.bitrise.io/app/2d252b25-8c31-427b-98e8-1d0b2bc484c1)
+[![Build Status](https://app.bitrise.io/app/2d252b25-8c31-427b-98e8-1.1.0bc484c1/status.svg?token=CiGeaNblC2veLBtAbTgmLQ&branch=main)](https://app.bitrise.io/app/2d252b25-8c31-427b-98e8-1d0b2bc484c1)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 ## Overview
@@ -16,7 +16,7 @@ To get started:
 1. Add the following git URL to your workflow. See the [official Bitrise documentation][3] on how to do that though the Bitrise app. You can also configure it locally by referencing the git URL in your `bitrise.yml` file.
 
 ```yml
-- git::https://github.com/DataDog/synthetics-test-automation-bitrise-step-upload-application.git@1.0.2:
+- git::https://github.com/DataDog/synthetics-test-automation-bitrise-step-upload-application.git@1.1.0:
 ```
 
 2. Add your API and application keys to your [secrets in Bitrise][4].
@@ -50,7 +50,7 @@ envs:
 This task overrides the path to the global `datadog-ci.config.json` file.
 
 ```yml
-- git::https://github.com/DataDog/synthetics-test-automation-bitrise-step-upload-application.git@1.0.2:
+- git::https://github.com/DataDog/synthetics-test-automation-bitrise-step-upload-application.git@1.1.0:
    inputs:
    - api_key: <DATADOG_API_KEY>
    - app_key: <DATADOG_APP_KEY>
@@ -64,7 +64,7 @@ For an example configuration file, see the [`global.config.json` file][7].
 For reference, this is an example of a complete configuration:
 
 ```yml
-- git::https://github.com/DataDog/synthetics-test-automation-bitrise-step-upload-application.git@1.0.2:
+- git::https://github.com/DataDog/synthetics-test-automation-bitrise-step-upload-application.git@1.1.0:
    inputs:
    - api_key: <DATADOG_API_KEY>
    - app_key: <DATADOG_APP_KEY>
