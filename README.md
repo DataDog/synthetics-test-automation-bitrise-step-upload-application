@@ -16,7 +16,7 @@ To get started:
 1. Add the following git URL to your workflow. See the [official Bitrise documentation][3] on how to do that though the Bitrise app. You can also configure it locally by referencing the git URL in your `bitrise.yml` file.
 
 ```yml
-- git::https://github.com/DataDog/synthetics-test-automation-bitrise-step-upload-application.git@1.11.0:
+- git::https://github.com/DataDog/synthetics-test-automation-bitrise-step-upload-application.git@v1.11.0:
 ```
 
 2. Add your API and application keys to your [secrets in Bitrise][4].
