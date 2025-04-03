@@ -44,8 +44,8 @@ workflows:
         inputs:
         - api_key: $DATADOG_API_KEY
         - app_key: $DATADOG_APP_KEY
-        - mobile_application_version_file_path: "/bitrise/src/example-app.apk"
         - mobile_application_id: "7b54b434-59ea-4ef7-868b-12c9180842f7"
+        - mobile_application_version_file_path: "/bitrise/src/example-app.apk"
         - version_name: "$APPLICATION_VERSION_NAME"
         outputs:
         - DATADOG_UPLOADED_APPLICATION_VERSION_ID: DATADOG_UPLOADED_APPLICATION_VERSION_ID
@@ -62,8 +62,8 @@ workflows:
         inputs:
         - api_key: $DATADOG_API_KEY
         - app_key: $DATADOG_APP_KEY
-        - mobile_application_version_file_path: "/bitrise/src/example-app.ipa"
         - mobile_application_id: "bcb5d107-5536-4fe5-a4a8-ea34a6c9bbee"
+        - mobile_application_version_file_path: "/bitrise/src/example-app.ipa"
         - version_name: "$APPLICATION_VERSION_NAME"
         outputs:
         - DATADOG_UPLOADED_APPLICATION_VERSION_ID: DATADOG_UPLOADED_APPLICATION_VERSION_ID
@@ -97,8 +97,8 @@ workflows:
         inputs:
         - api_key: $DATADOG_API_KEY
         - app_key: $DATADOG_APP_KEY
-        - mobile_application_version_file_path: "/Users/vagrant/git/example-app.apk"
         - mobile_application_id: "7b54b434-59ea-4ef7-868b-12c9180842f7"
+        - mobile_application_version_file_path: "/Users/vagrant/git/example-app.apk"
         - version_name: "$APPLICATION_VERSION_NAME"
         outputs:
         - DATADOG_UPLOADED_APPLICATION_VERSION_ID: DATADOG_UPLOADED_APPLICATION_VERSION_ID
@@ -115,8 +115,8 @@ workflows:
         inputs:
         - api_key: $DATADOG_API_KEY
         - app_key: $DATADOG_APP_KEY
-        - mobile_application_version_file_path: "/Users/vagrant/git/example-app.ipa"
         - mobile_application_id: "bcb5d107-5536-4fe5-a4a8-ea34a6c9bbee"
+        - mobile_application_version_file_path: "/Users/vagrant/git/example-app.ipa"
         - version_name: "$APPLICATION_VERSION_NAME"
         outputs:
         - DATADOG_UPLOADED_APPLICATION_VERSION_ID: DATADOG_UPLOADED_APPLICATION_VERSION_ID
