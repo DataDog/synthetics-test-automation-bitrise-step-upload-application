@@ -21,8 +21,8 @@ website: https://github.com/DataDog/synthetics-test-automation-bitrise-step-uplo
 source_code_url: https://github.com/DataDog/synthetics-test-automation-bitrise-step-upload-application
 support_url: https://github.com/DataDog/synthetics-test-automation-bitrise-step-upload-application/issues
 project_type_tags:
-- ios
-- android
+  - ios
+  - android
 type_tags:
   - test
 
@@ -30,53 +30,52 @@ toolkit:
   bash:
     entry_file: ./upload-application.sh
 
-
 inputs:
   - api_key: $DATADOG_API_KEY
     opts:
       category: Required Inputs
-      title: "Datadog API Key"
+      title: 'Datadog API Key'
       description: The API key used to query the Datadog API.
       is_expand: true
       is_required: true
   - app_key: $DATADOG_APP_KEY
     opts:
       category: Required Inputs
-      title: "Datadog APP Key"
+      title: 'Datadog APP Key'
       description: The application key used to query the Datadog API.
       is_expand: true
       is_required: true
   - config_path: ''
     opts:
       category: Optional Inputs
-      title: "Global JSON configuration"
+      title: 'Global JSON configuration'
       description: The global JSON configuration used when launching tests.
   - latest: false
     opts:
       category: Optional Inputs
-      title: "Latest"
+      title: 'Latest'
       description: Marks the application as `latest`. Any tests that run on the latest version will use this version on their next run.
   - mobile_application_id: ''
     opts:
       category: Required Inputs
-      title: "Mobile Application ID"
+      title: 'Mobile Application ID'
       description: ID of the application you want to upload the new version to.
       is_required: true
   - mobile_application_version_file_path: ''
     opts:
       category: Required Inputs
-      title: "Mobile Application Version File Path"
+      title: 'Mobile Application Version File Path'
       description: Override the mobile application with a local or recently built application.
       is_required: true
   - site: 'datadoghq.com'
     opts:
       category: Optional Inputs
-      title: "Datadog Site"
+      title: 'Datadog Site'
       description: The Datadog site to send data to. If the `DD_SITE` environment variable is set, it takes preference.
   - version_name: ''
     opts:
       category: Required Inputs
-      title: "Version Name"
+      title: 'Version Name'
       description: Name of the new version. It has to be unique.
       is_required: true
 
@@ -84,5 +83,5 @@ outputs:
   - DATADOG_UPLOADED_APPLICATION_VERSION_ID: $DATADOG_UPLOADED_APPLICATION_VERSION_ID
     opts:
       category: Outputs
-      title: "Datadog Uploaded Application Version ID"
+      title: 'Datadog Uploaded Application Version ID'
       description: The ID of the uploaded application version, which can be used by the run-tests step.
