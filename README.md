@@ -80,14 +80,14 @@ For reference, this is an example of a complete configuration:
 
 | Name                                   | Description                                                                                                                                                                       |
 | -------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `api_key`                              | Your Datadog API key (**Required**). This key is created by your [Datadog organization][8] and will be accessed as an environment variable.                                       |
-| `app_key`                              | Your Datadog application key (**Required**). This key is created by your [Datadog organization][8] and will be accessed as an environment variable.                               |
+| `api_key`                              | (**Required**) Your Datadog API key. This key is created by your [Datadog organization][8] and will be accessed as an environment variable.                                       |
+| `app_key`                              | (**Required**) Your Datadog application key. This key is created by your [Datadog organization][8] and will be accessed as an environment variable.                               |
 | `config_path`                          | The global JSON configuration is used when launching tests. See the [example configuration][9] for more details. <br><sub>**Default:** `datadog-ci.json`</sub>                    |
 | `latest`                               | Marks the application as `latest`. Any tests that run on the latest version will use this version on their next run. <br><sub>**Default:** `false`</sub>                          |
-| `mobile_application_id`                | ID of the application you want to upload the new version to. <br><sub>**Required**</sub>                                                                                          |
-| `mobile_application_version_file_path` | Override the application version for [Synthetic mobile application tests][15]. <br><sub>**Required**</sub>                                                                        |
+| `mobile_application_id`                | (**Required**) ID of the application you want to upload the new version to.                                                                                                       |
+| `mobile_application_version_file_path` | (**Required**) Override the application version for [Synthetic mobile application tests][15].                                                                                     |
 | `site`                                 | The [Datadog site][14] to send data to. <!-- partial Your Datadog site is {{< region-param key="dd_site" code="true" >}}. partial --> <br><sub>**Default:** `datadoghq.com`</sub> |
-| `version_name`                         | Name of the new version. It has to be unique. <br><sub>**Required**</sub>                                                                                                         |
+| `version_name`                         | (**Required**) Name of the new version. It has to be unique.                                                                                                                      |
 
 ## Outputs
 
