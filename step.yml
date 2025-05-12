@@ -73,7 +73,7 @@ inputs:
     opts:
       category: Optional Inputs
       title: 'Datadog Site'
-      description: The Datadog site to send data to. If the `DD_SITE` environment variable is set, it takes preference.
+      description: Your Datadog site.
   - version_name: ''
     opts:
       category: Required Inputs

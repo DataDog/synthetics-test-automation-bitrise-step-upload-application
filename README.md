@@ -84,16 +84,16 @@ For reference, this is an example of a complete configuration:
 
 For more information on the available configuration, see the [`datadog-ci upload-application` documentation][2].
 
-| Name                                   | Description                                                                                                                                                                       |
-| -------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `api_key`                              | (**Required**) Your Datadog API key. This key is [created in your Datadog organization][8] and should be stored as a secret.                                                      |
-| `app_key`                              | (**Required**) Your Datadog application key. This key is [created in your Datadog organization][8] and should be stored as a secret.                                              |
-| `config_path`                          | The path to the [global configuration file][9] that configures datadog-ci. <br><sub>**Default:** `datadog-ci.json`</sub>                                                          |
-| `latest`                               | Mark the application as `latest`. Any tests that run on the latest version will use this version on their next run. <br><sub>**Default:** `false`</sub>                           |
-| `mobile_application_id`                | (**Required**) The ID of the application you want to upload the new version to.                                                                                                   |
-| `mobile_application_version_file_path` | (**Required**) Override the application version for [Synthetic mobile application tests][15].                                                                                     |
-| `site`                                 | The [Datadog site][14] to send data to. <!-- partial Your Datadog site is {{< region-param key="dd_site" code="true" >}}. partial --> <br><sub>**Default:** `datadoghq.com`</sub> |
-| `version_name`                         | (**Required**) The name of the new version. It has to be unique.                                                                                                                  |
+| Name                                   | Description                                                                                                                                             |
+| -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `api_key`                              | (**Required**) Your Datadog API key. This key is [created in your Datadog organization][8] and should be stored as a secret.                            |
+| `app_key`                              | (**Required**) Your Datadog application key. This key is [created in your Datadog organization][8] and should be stored as a secret.                    |
+| `config_path`                          | The path to the [global configuration file][9] that configures datadog-ci. <br><sub>**Default:** `datadog-ci.json`</sub>                                |
+| `latest`                               | Mark the application as `latest`. Any tests that run on the latest version will use this version on their next run. <br><sub>**Default:** `false`</sub> |
+| `mobile_application_id`                | (**Required**) The ID of the application you want to upload the new version to.                                                                         |
+| `mobile_application_version_file_path` | (**Required**) Override the application version for [Synthetic mobile application tests][15].                                                           |
+| `site`                                 | Your Datadog site. The possible values are listed [in this table][14]. <br><sub>**Default:** `datadoghq.com`</sub>                                      |
+| `version_name`                         | (**Required**) The name of the new version. It has to be unique.                                                                                        |
 
 ## Outputs
 
