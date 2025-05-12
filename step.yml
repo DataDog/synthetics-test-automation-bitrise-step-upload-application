@@ -67,7 +67,7 @@ inputs:
     opts:
       category: Required Inputs
       title: 'Mobile Application Version File Path'
-      description: Override the mobile application with a local or recently built application.
+      description: The path to the new version of your mobile application (`.apk` or `.ipa`). You may use `$BITRISE_IPA_PATH` or `$BITRISE_APK_PATH` from your previous build steps.
       is_required: true
   - site: 'datadoghq.com'
     opts:
