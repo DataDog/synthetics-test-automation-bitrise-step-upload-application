@@ -6,7 +6,11 @@
 
 ## Overview
 
-With the `synthetics-test-automation-bitrise-step-upload-application` step, you can upload a new version of your application to Datadog to run Synthetic tests against during your Bitrise CI, ensuring that all your teams using Bitrise can benefit from Synthetic tests at every stage of the software lifecycle. This step uses the [Datadog CI Synthetics command][2], and requires that your application already exists.
+With the `synthetics-test-automation-bitrise-step-upload-application` step, you can upload a new version of your application to Datadog to run Synthetic tests against during your Bitrise CI, ensuring that all your teams using Bitrise can benefit from Synthetic tests at every stage of the software lifecycle.
+
+This step requires that your application already exists in Datadog.
+
+For more information on the available configuration, see the [`datadog-ci upload-application` documentation][2].
 
 ## Setup
 
@@ -78,16 +82,18 @@ For reference, this is an example of a complete configuration:
 
 ## Inputs
 
+For more information on the available configuration, see the [`datadog-ci upload-application` documentation][2].
+
 | Name                                   | Description                                                                                                                                                                       |
 | -------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `api_key`                              | (**Required**) Your Datadog API key. This key is created by your [Datadog organization][8] and will be accessed as an environment variable.                                       |
 | `app_key`                              | (**Required**) Your Datadog application key. This key is created by your [Datadog organization][8] and will be accessed as an environment variable.                               |
 | `config_path`                          | The global JSON configuration is used when launching tests. See the [example configuration][9] for more details. <br><sub>**Default:** `datadog-ci.json`</sub>                    |
-| `latest`                               | Marks the application as `latest`. Any tests that run on the latest version will use this version on their next run. <br><sub>**Default:** `false`</sub>                          |
-| `mobile_application_id`                | (**Required**) ID of the application you want to upload the new version to.                                                                                                       |
+| `latest`                               | Mark the application as `latest`. Any tests that run on the latest version will use this version on their next run. <br><sub>**Default:** `false`</sub>                           |
+| `mobile_application_id`                | (**Required**) The ID of the application you want to upload the new version to.                                                                                                   |
 | `mobile_application_version_file_path` | (**Required**) Override the application version for [Synthetic mobile application tests][15].                                                                                     |
 | `site`                                 | The [Datadog site][14] to send data to. <!-- partial Your Datadog site is {{< region-param key="dd_site" code="true" >}}. partial --> <br><sub>**Default:** `datadoghq.com`</sub> |
-| `version_name`                         | (**Required**) Name of the new version. It has to be unique.                                                                                                                      |
+| `version_name`                         | (**Required**) The name of the new version. It has to be unique.                                                                                                                  |
 
 ## Outputs
 
@@ -103,19 +109,18 @@ Additional helpful documentation, links, and articles:
 - [Continuous Testing and CI/CD Configuration][11]
 - [Best practices for continuous testing with Datadog][12]
 
-<!-- Links to Marketplace -->
 [1]: https://bitrise.io/integrations/steps/datadog-mobile-app-upload
-[2]: https://docs.datadoghq.com/continuous_testing/cicd_integrations/configuration/?tab=npm#run-tests
+[2]: https://docs.datadoghq.com/continuous_testing/cicd_integrations/configuration/?tab=npm#upload-application-command
 [3]: https://devcenter.bitrise.io/en/steps-and-workflows/introduction-to-steps/adding-steps-to-a-workflow.html#adding-steps-from-alternative-sources
 [4]: https://devcenter.bitrise.io/en/builds/secrets.html#setting-a-secret
 [5]: https://devcenter.bitrise.io/en/steps-and-workflows/introduction-to-steps/step-inputs.html
 [6]: https://github.com/bitrise-io/bitrise
 [7]: https://github.com/DataDog/datadog-ci/blob/master/.github/workflows/e2e/global.config.json
 [8]: https://docs.datadoghq.com/account_management/api-app-keys/
-[9]: https://docs.datadoghq.com/continuous_testing/cicd_integrations/configuration/?tab=npm#global-configuration-file-options
+[9]: https://docs.datadoghq.com/continuous_testing/cicd_integrations/configuration/?tab=npm#global-configuration-file
 [10]: https://bitrise.io/integrations/steps/datadog-mobile-app-run-tests
 [11]: https://docs.datadoghq.com/continuous_testing/cicd_integrations/configuration
 [12]: https://www.datadoghq.com/blog/best-practices-datadog-continuous-testing/
 [13]: https://docs.datadoghq.com/getting_started/continuous_testing/
-[14]: https://docs.datadoghq.com/getting_started/site/
+[14]: https://docs.datadoghq.com/getting_started/site/#access-the-datadog-site
 [15]: https://docs.datadoghq.com/synthetics/mobile_app_testing/
