@@ -61,7 +61,7 @@ inputs:
     opts:
       category: Required Inputs
       title: 'Mobile Application ID'
-      description: ID of the application you want to upload the new version to.
+      description: The ID of the application you want to upload the new version to.
       is_required: true
   - mobile_application_version_file_path: ''
     opts:
