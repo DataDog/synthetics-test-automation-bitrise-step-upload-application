@@ -86,7 +86,7 @@ For more information on the available configuration, see the [`datadog-ci upload
 
 | Name                                   | Description                                                                                                                                                                       |
 | -------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `api_key`                              | (**Required**) Your Datadog API key. This key is created by your [Datadog organization][8] and will be accessed as an environment variable.                                       |
+| `api_key`                              | (**Required**) Your Datadog API key. This key is [created in your Datadog organization][8] and should be stored as a secret.                                                      |
 | `app_key`                              | (**Required**) Your Datadog application key. This key is created by your [Datadog organization][8] and will be accessed as an environment variable.                               |
 | `config_path`                          | The global JSON configuration is used when launching tests. See the [example configuration][9] for more details. <br><sub>**Default:** `datadog-ci.json`</sub>                    |
 | `latest`                               | Mark the application as `latest`. Any tests that run on the latest version will use this version on their next run. <br><sub>**Default:** `false`</sub>                           |

@@ -35,9 +35,10 @@ inputs:
     opts:
       category: Required Inputs
       title: 'Datadog API Key'
-      description: The API key used to query the Datadog API.
+      description: Your Datadog API key.
       is_expand: true
       is_required: true
+      is_sensitive: true
   - app_key: $DATADOG_APP_KEY
     opts:
       category: Required Inputs
