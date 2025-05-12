@@ -56,7 +56,7 @@ inputs:
     opts:
       category: Optional Inputs
       title: 'Latest'
-      description: Marks the application as `latest`. Any tests that run on the latest version will use this version on their next run.
+      description: Mark the new version as `latest`. Any tests that run on the latest version will use this version on their next run.
   - mobile_application_id: ''
     opts:
       category: Required Inputs
