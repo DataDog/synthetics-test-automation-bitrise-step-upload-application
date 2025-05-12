@@ -50,7 +50,7 @@ inputs:
   - config_path: ''
     opts:
       category: Optional Inputs
-      title: 'Global JSON configuration'
+      title: 'Global Configuration File'
       description: The path to the global configuration file that configures datadog-ci.
   - latest: false
     opts:
