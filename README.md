@@ -61,8 +61,6 @@ This task overrides the path to the global `datadog-ci.config.json` file.
    - config_path: './synthetics-config.json'
 ```
 
-For an example configuration file, see the [`global.config.json` file][7].
-
 ### Example including all possible configurations
 
 For reference, this is an example of a complete configuration:
@@ -109,13 +107,11 @@ Additional helpful documentation, links, and articles:
 - [Continuous Testing and CI/CD Configuration][11]
 - [Best practices for continuous testing with Datadog][12]
 
-[1]: https://bitrise.io/integrations/steps/datadog-mobile-app-upload
 [2]: https://docs.datadoghq.com/continuous_testing/cicd_integrations/configuration/?tab=npm#upload-application-command
 [3]: https://devcenter.bitrise.io/en/steps-and-workflows/introduction-to-steps/adding-steps-to-a-workflow.html#adding-steps-from-alternative-sources
 [4]: https://devcenter.bitrise.io/en/builds/secrets.html#setting-a-secret
 [5]: https://devcenter.bitrise.io/en/steps-and-workflows/introduction-to-steps/step-inputs.html
 [6]: https://github.com/bitrise-io/bitrise
-[7]: https://github.com/DataDog/datadog-ci/blob/master/.github/workflows/e2e/global.config.json
 [8]: https://docs.datadoghq.com/account_management/api-app-keys/
 [9]: https://docs.datadoghq.com/continuous_testing/cicd_integrations/configuration/?tab=npm#global-configuration-file
 [10]: https://bitrise.io/integrations/steps/datadog-mobile-app-run-tests
