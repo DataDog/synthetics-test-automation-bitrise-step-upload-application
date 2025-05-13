@@ -35,43 +35,45 @@ inputs:
     opts:
       category: Required Inputs
       title: 'Datadog API Key'
-      description: The API key used to query the Datadog API.
+      description: Your Datadog API key.
       is_expand: true
       is_required: true
+      is_sensitive: true
   - app_key: $DATADOG_APP_KEY
     opts:
       category: Required Inputs
-      title: 'Datadog APP Key'
-      description: The application key used to query the Datadog API.
+      title: 'Datadog Application Key'
+      description: Your Datadog application key.
       is_expand: true
       is_required: true
+      is_sensitive: true
   - config_path: ''
     opts:
       category: Optional Inputs
-      title: 'Global JSON configuration'
-      description: The global JSON configuration used when launching tests.
+      title: 'Global Configuration File'
+      description: The path to the global configuration file that configures datadog-ci.
   - latest: false
     opts:
       category: Optional Inputs
       title: 'Latest'
-      description: Marks the application as `latest`. Any tests that run on the latest version will use this version on their next run.
+      description: Mark the new version as `latest`. Any tests that run on the latest version will use this version on their next run.
   - mobile_application_id: ''
     opts:
       category: Required Inputs
       title: 'Mobile Application ID'
-      description: ID of the application you want to upload the new version to.
+      description: The ID of the application you want to upload the new version to.
       is_required: true
   - mobile_application_version_file_path: ''
     opts:
       category: Required Inputs
       title: 'Mobile Application Version File Path'
-      description: Override the mobile application with a local or recently built application.
+      description: The path to the new version of your mobile application (`.apk` or `.ipa`). You may use `$BITRISE_IPA_PATH` or `$BITRISE_APK_PATH` from your previous build steps.
       is_required: true
   - site: 'datadoghq.com'
     opts:
       category: Optional Inputs
       title: 'Datadog Site'
-      description: The Datadog site to send data to. If the `DD_SITE` environment variable is set, it takes preference.
+      description: Your Datadog site.
   - version_name: ''
     opts:
       category: Required Inputs
