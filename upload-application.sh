@@ -1,6 +1,6 @@
 UploadApplication() {
     if [[ -n "${DD_SITE}" ]]; then
-        site=${DD_SITE}
+        datadog_site=${DD_SITE}
     fi
 
     DATADOG_CI_VERSION="3.5.0"
@@ -39,7 +39,7 @@ UploadApplication() {
     output=$(DATADOG_API_KEY="${api_key}" \
     DATADOG_APP_KEY="${app_key}" \
     DATADOG_SUBDOMAIN="app" \
-    DATADOG_SITE="${site}" \
+    DATADOG_SITE="${datadog_site}" \
     DATADOG_SYNTHETICS_CI_TRIGGER_APP="bitrise_step" \
         $DATADOG_CI_COMMAND synthetics upload-application \
         "${args[@]}")

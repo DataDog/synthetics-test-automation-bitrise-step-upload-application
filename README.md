@@ -71,10 +71,10 @@ For reference, this is an example of a complete configuration:
    - api_key: <DATADOG_API_KEY>
    - app_key: <DATADOG_APP_KEY>
    - config_path: './global.config.json'
+   - datadog_site: 'datadoghq.com'
    - latest: true
    - mobile_application_id: '123-123-123'
    - mobile_application_version_file_path: 'path/to/application.apk'
-   - site: 'datadoghq.com'
    - version_name: 'example 1.0'
 ```
 
@@ -87,10 +87,10 @@ For more information on the available configuration, see the [`datadog-ci upload
 | `api_key`                              | (**Required**) Your Datadog API key. This key is [created in your Datadog organization][8] and should be stored as a secret.                                                                                    |
 | `app_key`                              | (**Required**) Your Datadog application key. This key is [created in your Datadog organization][8] and should be stored as a secret.                                                                            |
 | `config_path`                          | The path to the [global configuration file][9] that configures datadog-ci. <br><sub>**Default:** `datadog-ci.json`</sub>                                                                                        |
+| `datadog_site`                         | Your Datadog site. The possible values are listed [in this table][14].<!-- partial Your Datadog site is {{< region-param key="dd_site" code="true" >}}. partial --> <br><sub>**Default:** `datadoghq.com`</sub> |
 | `latest`                               | Mark the new version as `latest`. Any tests that run on the latest version will use this version on their next run. <br><sub>**Default:** `false`</sub>                                                         |
 | `mobile_application_id`                | (**Required**) The ID of the application you want to upload the new version to.                                                                                                                                 |
 | `mobile_application_version_file_path` | (**Required**) The path to the new version of your mobile application (`.apk` or `.ipa`). You may use `$BITRISE_IPA_PATH` or `$BITRISE_APK_PATH` from your previous build steps.                                |
-| `site`                                 | Your Datadog site. The possible values are listed [in this table][14].<!-- partial Your Datadog site is {{< region-param key="dd_site" code="true" >}}. partial --> <br><sub>**Default:** `datadoghq.com`</sub> |
 | `version_name`                         | (**Required**) The name of the new version. It has to be unique.                                                                                                                                                |
 
 ## Outputs
