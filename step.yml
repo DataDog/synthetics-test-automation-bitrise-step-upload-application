@@ -35,7 +35,7 @@ inputs:
     opts:
       category: Required Inputs
       title: 'Datadog API Key'
-      description: Your Datadog API key.
+      description: Your Datadog API key. This key is [created in your Datadog organization](https://docs.datadoghq.com/account_management/api-app-keys/) and should be stored as a secret.
       is_expand: true
       is_required: true
       is_sensitive: true
@@ -43,7 +43,7 @@ inputs:
     opts:
       category: Required Inputs
       title: 'Datadog Application Key'
-      description: Your Datadog application key.
+      description: Your Datadog application key. This key is [created in your Datadog organization](https://docs.datadoghq.com/account_management/api-app-keys/) and should be stored as a secret.
       is_expand: true
       is_required: true
       is_sensitive: true
@@ -51,12 +51,12 @@ inputs:
     opts:
       category: Optional Inputs
       title: 'Global Configuration File'
-      description: The path to the global configuration file that configures datadog-ci.
+      description: The path to the [global configuration file](https://docs.datadoghq.com/continuous_testing/cicd_integrations/configuration/?tab=npm#global-configuration-file) that configures datadog-ci.
   - datadog_site: 'datadoghq.com'
     opts:
       category: Optional Inputs
       title: 'Datadog Site'
-      description: Your Datadog site.
+      description: Your Datadog site. The possible values are listed [in this table](https://docs.datadoghq.com/getting_started/site/#access-the-datadog-site).
   - latest: false
     opts:
       category: Optional Inputs
@@ -78,7 +78,7 @@ inputs:
     opts:
       category: Required Inputs
       title: 'Version Name'
-      description: Name of the new version. It has to be unique.
+      description: The name of the new version. It has to be unique.
       is_required: true
 
 outputs:
