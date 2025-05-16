@@ -12,10 +12,10 @@ DIFF_ARGS="-u --label actual --label expected"
     export api_key="DD_API_KEY"
     export app_key="DD_APP_KEY"
     export config_path="./some/other/path.json"
+    export datadog_site="datadoghq.eu"
     export latest=true
     export mobile_application_id="123-123-123"
     export mobile_application_version_file_path="example/test.apk"
-    export site="datadoghq.eu"
     export version_name="example 1.0"
     export DATADOG_CI_COMMAND="echo"
 
@@ -26,10 +26,10 @@ DIFF_ARGS="-u --label actual --label expected"
     export api_key="DD_API_KEY"
     export app_key="DD_APP_KEY"
     export config_path=""
+    export datadog_site=""
     export latest=false
     export mobile_application_id=""
     export mobile_application_version_file_path=""
-    export site=""
     export version_name=""
     export DATADOG_CI_COMMAND="echo"
 

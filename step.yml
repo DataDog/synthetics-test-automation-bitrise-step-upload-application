@@ -52,6 +52,11 @@ inputs:
       category: Optional Inputs
       title: 'Global Configuration File'
       description: The path to the global configuration file that configures datadog-ci.
+  - datadog_site: 'datadoghq.com'
+    opts:
+      category: Optional Inputs
+      title: 'Datadog Site'
+      description: Your Datadog site.
   - latest: false
     opts:
       category: Optional Inputs
@@ -69,11 +74,6 @@ inputs:
       title: 'Mobile Application Version File Path'
       description: The path to the new version of your mobile application (`.apk` or `.ipa`). You may use `$BITRISE_IPA_PATH` or `$BITRISE_APK_PATH` from your previous build steps.
       is_required: true
-  - site: 'datadoghq.com'
-    opts:
-      category: Optional Inputs
-      title: 'Datadog Site'
-      description: Your Datadog site.
   - version_name: ''
     opts:
       category: Required Inputs
