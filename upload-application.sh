@@ -37,10 +37,10 @@ UploadApplication() {
     fi
 
     output=$(DATADOG_API_KEY="${api_key}" \
-    DATADOG_APP_KEY="${app_key}" \
-    DATADOG_SUBDOMAIN="app" \
-    DATADOG_SITE="${datadog_site}" \
-    DATADOG_SYNTHETICS_CI_TRIGGER_APP="bitrise_step" \
+        DATADOG_APP_KEY="${app_key}" \
+        DATADOG_SUBDOMAIN="app" \
+        DATADOG_SITE="${datadog_site}" \
+        DATADOG_SYNTHETICS_CI_TRIGGER_APP="bitrise_step" \
         $DATADOG_CI_COMMAND synthetics upload-application \
         "${args[@]}")
 
@@ -53,6 +53,7 @@ UploadApplication() {
         envman add --key DATADOG_UPLOADED_APPLICATION_VERSION_ID --value "$version_id"
     else
         echo "No Version ID found in the output."
+        exit 1
     fi
 
     exit $command_exit_code
