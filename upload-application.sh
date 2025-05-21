@@ -3,7 +3,7 @@ UploadApplication() {
         datadog_site=${DD_SITE}
     fi
 
-    DATADOG_CI_VERSION="3.5.0"
+    DATADOG_CI_VERSION="3.6.1"
 
     unamestr=$(uname)
 
@@ -37,22 +37,22 @@ UploadApplication() {
     fi
 
     output=$(DATADOG_API_KEY="${api_key}" \
-    DATADOG_APP_KEY="${app_key}" \
-    DATADOG_SUBDOMAIN="app" \
-    DATADOG_SITE="${datadog_site}" \
-    DATADOG_SYNTHETICS_CI_TRIGGER_APP="bitrise_step" \
+        DATADOG_APP_KEY="${app_key}" \
+        DATADOG_SUBDOMAIN="app" \
+        DATADOG_SITE="${datadog_site}" \
+        DATADOG_SYNTHETICS_CI_TRIGGER_APP="bitrise_step" \
         $DATADOG_CI_COMMAND synthetics upload-application \
         "${args[@]}")
 
     command_exit_code=$?
     echo $output
 
-    if [[ $output =~ ([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})$ ]]; then
-        version_id=${BASH_REMATCH[1]}
+    if version_id=$(echo "$output" | grep -oE '[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$'); then
         echo "Extracted Version ID: $version_id (can be referenced with \$DATADOG_UPLOADED_APPLICATION_VERSION_ID)"
         envman add --key DATADOG_UPLOADED_APPLICATION_VERSION_ID --value "$version_id"
     else
         echo "No Version ID found in the output."
+        exit 1
     fi
 
     exit $command_exit_code
