@@ -47,8 +47,7 @@ UploadApplication() {
     command_exit_code=$?
     echo $output
 
-    if [[ $output =~ ([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})$ ]]; then
-        version_id=${BASH_REMATCH[1]}
+    if version_id=$(echo "$output" | grep -oE '[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$'); then
         echo "Extracted Version ID: $version_id (can be referenced with \$DATADOG_UPLOADED_APPLICATION_VERSION_ID)"
         envman add --key DATADOG_UPLOADED_APPLICATION_VERSION_ID --value "$version_id"
     else
