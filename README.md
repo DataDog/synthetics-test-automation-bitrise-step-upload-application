@@ -26,26 +26,7 @@ To get started:
 2. Add your API and application keys to your [secrets in Bitrise][4].
 3. [Configure your step inputs][5]. You can also configure them in your `bitrise.yml` file. The only required inputs are the two secrets you configured earlier. For a comprehensive list of inputs, see the [Inputs section](#inputs).
 
-## How to use this step locally
-
-You can run this step directly using the [Bitrise CLI][6].
-
-To run this step locally:
-
-1. Open your terminal or command line.
-2. `git clone` the [Bitrise repository][6].
-3. `cd` into the directory of the step (the one you just `git clone`d).
-4. Create a `.bitrise.secrets.yml` file in the same directory of `bitrise.yml`. The `.bitrise.secrets.yml` file is a Git-ignored file, so you can store your secrets in it.
-5. Check the `bitrise.yml` file for any secret you should set in `.bitrise.secrets.yml`.
-6. Once you have the required secret parameters in your `.bitrise.secrets.yml` file, run this step with the [Bitrise CLI][6] with `bitrise run test`.
-
-An example `.bitrise.secrets.yml` file:
-
-```yml
-envs:
-- A_SECRET_PARAM_ONE: the value for secret one
-- A_SECRET_PARAM_TWO: the value for secret two
-```
+When running the step locally with the Bitrise CLI, the secrets should be stored in a `.bitrise.secrets.yml` file. See [Managing secrets locally][6].
 
 ## Usage
 
@@ -95,9 +76,9 @@ For more information on the available configuration, see the [`datadog-ci upload
 
 ## Outputs
 
-| Name                                      | Description                                                                                                                                                                                             |
-| ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `DATADOG_UPLOADED_APPLICATION_VERSION_ID` | The version ID of the application that was just uploaded. Pass it to the [`datadog-mobile-app-run-tests` step][10] with the `mobile_application_version` input to test this version of the application. |
+| Name                                      | Description                                                                                                                                                                                   |
+| ----------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `DATADOG_UPLOADED_APPLICATION_VERSION_ID` | The version ID of the application that was just uploaded. Pass it to the [Bitrise step to run tests][10] with the `mobile_application_version` input to test this version of the application. |
 
 ## Further reading
 
@@ -111,10 +92,10 @@ Additional helpful documentation, links, and articles:
 [3]: https://devcenter.bitrise.io/en/steps-and-workflows/introduction-to-steps/adding-steps-to-a-workflow.html#adding-steps-from-alternative-sources
 [4]: https://devcenter.bitrise.io/en/builds/secrets.html#setting-a-secret
 [5]: https://devcenter.bitrise.io/en/steps-and-workflows/introduction-to-steps/step-inputs.html
-[6]: https://github.com/bitrise-io/bitrise
+[6]: https://devcenter.bitrise.io/en/bitrise-cli/managing-secrets-locally.html
 [8]: https://docs.datadoghq.com/account_management/api-app-keys/
 [9]: https://docs.datadoghq.com/continuous_testing/cicd_integrations/configuration/?tab=npm#global-configuration-file
-[10]: https://bitrise.io/integrations/steps/datadog-mobile-app-run-tests
+[10]: https://github.com/DataDog/synthetics-test-automation-bitrise-step-run-tests
 [11]: https://docs.datadoghq.com/continuous_testing/cicd_integrations/configuration
 [12]: https://www.datadoghq.com/blog/best-practices-datadog-continuous-testing/
 [13]: https://docs.datadoghq.com/getting_started/continuous_testing/
