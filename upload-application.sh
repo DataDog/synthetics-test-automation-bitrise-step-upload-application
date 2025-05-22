@@ -36,7 +36,6 @@ UploadApplication() {
         args+=(--latest)
     fi
 
-    # Both let the output be printed to the console and stored in the output variable.
     output=$(
         DATADOG_API_KEY="${api_key}" \
             DATADOG_APP_KEY="${app_key}" \
@@ -44,8 +43,10 @@ UploadApplication() {
             DATADOG_SITE="${datadog_site}" \
             DATADOG_SYNTHETICS_CI_TRIGGER_APP="bitrise_step" \
             $DATADOG_CI_COMMAND synthetics upload-application \
-            "${args[@]}" | tee /dev/tty
+            "${args[@]}"
     )
+
+    echo "$output"
 
     command_exit_code=$?
 
