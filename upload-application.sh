@@ -36,16 +36,18 @@ UploadApplication() {
         args+=(--latest)
     fi
 
-    output=$(DATADOG_API_KEY="${api_key}" \
-        DATADOG_APP_KEY="${app_key}" \
-        DATADOG_SUBDOMAIN="app" \
-        DATADOG_SITE="${datadog_site}" \
-        DATADOG_SYNTHETICS_CI_TRIGGER_APP="bitrise_step" \
-        $DATADOG_CI_COMMAND synthetics upload-application \
-        "${args[@]}")
+    # Both let the output be printed to the console and stored in the output variable.
+    output=$(
+        DATADOG_API_KEY="${api_key}" \
+            DATADOG_APP_KEY="${app_key}" \
+            DATADOG_SUBDOMAIN="app" \
+            DATADOG_SITE="${datadog_site}" \
+            DATADOG_SYNTHETICS_CI_TRIGGER_APP="bitrise_step" \
+            $DATADOG_CI_COMMAND synthetics upload-application \
+            "${args[@]}" | tee /dev/tty
+    )
 
     command_exit_code=$?
-    echo $output
 
     if version_id=$(echo "$output" | grep -oE '[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$'); then
         echo "Extracted Version ID: $version_id (can be referenced with \$DATADOG_UPLOADED_APPLICATION_VERSION_ID)"
