@@ -54,7 +54,7 @@ UploadApplication() {
     version_id=$(echo "$output" | sed 's/\x1b\[[0-9;]*m//g' | grep -oE '[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$')
 
     if [[ -n "$version_id" ]]; then
-        echo "Extracted Version ID: $version_id (can be referenced with \$DATADOG_UPLOADED_APPLICATION_VERSION_ID)"
+        echo -e "\nExtracted Version ID: $version_id (can be referenced with \$DATADOG_UPLOADED_APPLICATION_VERSION_ID)"
         envman add --key DATADOG_UPLOADED_APPLICATION_VERSION_ID --value "$version_id"
     else
         echo "No Version ID found in the output."
