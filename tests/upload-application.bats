@@ -19,7 +19,7 @@ DIFF_ARGS="-u --label actual --label expected"
     export version_name="example 1.0"
     export DATADOG_CI_COMMAND="echo"
 
-    diff $DIFF_ARGS <(UploadApplication) <(echo synthetics upload-application --config ./some/other/path.json --mobileApplicationId '123-123-123' --mobileApplicationVersionFilePath "example/test.apk" --versionName 'example 1.0' --latest; echo "No Version ID found in the output.")
+    diff $DIFF_ARGS <(UploadApplication || true) <(echo synthetics upload-application --config ./some/other/path.json --mobileApplicationId '123-123-123' --mobileApplicationVersionFilePath "example/test.apk" --versionName 'example 1.0' --latest && echo "No Version ID found in the output.")
 }
 
 @test 'Use default parameters' {
@@ -33,5 +33,5 @@ DIFF_ARGS="-u --label actual --label expected"
     export version_name=""
     export DATADOG_CI_COMMAND="echo"
 
-    diff $DIFF_ARGS <(UploadApplication) <(echo synthetics upload-application; echo "No Version ID found in the output.")
+    diff $DIFF_ARGS <(UploadApplication || true) <(echo synthetics upload-application && echo "No Version ID found in the output.")
 }
