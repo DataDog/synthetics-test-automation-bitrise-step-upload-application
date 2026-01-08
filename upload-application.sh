@@ -3,7 +3,7 @@ UploadApplication() {
         datadog_site=${DD_SITE}
     fi
 
-    DATADOG_CI_VERSION="3.21.4"
+    DATADOG_CI_VERSION="5.1.0"
 
     unamestr=$(uname)
 
